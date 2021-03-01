@@ -49,7 +49,7 @@
                             </graphic></ToggleButton>
                     </children>
                 </HBox>
-                <Label fx:id="gameTitle" layoutX="165.0" layoutY="86.0" styleClass="titleLabel" text="Forbidden Temple" textFill="WHITE" />
+                <Label fx:id="gameTitle" layoutX="165.0" layoutY="86.0" styleClass="titleLabel" text="Forbidden Forest" textFill="WHITE" />
             </children>
         </Pane>
     </center>
