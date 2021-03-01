@@ -44,6 +44,9 @@ public class menu_screen_controller {
     private TextField nameInput;
 
     @FXML
+    private Button startGame;
+
+    @FXML
     public void initialize() {
         gameTitle = new Label("Forbidden Temple");
     }
@@ -71,6 +74,7 @@ public class menu_screen_controller {
             Alert a = new Alert(Alert.AlertType.WARNING);
             a.setContentText("Input a valid name.");
             a.show();
+            System.out.println(a.getButtonTypes());
         } else if (!sword.isSelected() && !bow.isSelected() && !axe.isSelected()) {
             Alert a = new Alert(Alert.AlertType.WARNING);
             a.setContentText("Please select a weapon.");

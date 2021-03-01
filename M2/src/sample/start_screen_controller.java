@@ -23,7 +23,7 @@ public class start_screen_controller {
     }
 
     public void goToMenuScreen(ActionEvent event) throws IOException {
-
+        Settings.gameState = "Menu";
         Parent menuParent = FXMLLoader.load(getClass().getResource("menu_screen.fxml"));
         Scene menuScene = new Scene(menuParent, 960, 600);
 

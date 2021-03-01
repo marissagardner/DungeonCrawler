@@ -67,7 +67,7 @@
                         <ToggleButton fx:id="hard" mnemonicParsing="false" onMouseClicked="#handleDiffcultyToggleClick" prefHeight="24.0" styleClass="difficultyLabels" text="Hard" toggleGroup="$difficultyGroup" />
                     </children>
                 </HBox>
-                <Button layoutX="437.0" layoutY="133.0" mnemonicParsing="false" onAction="#goToGameScreen" text="START GAME" />
+                <Button fx:id="startGame" layoutX="437.0" layoutY="133.0" mnemonicParsing="false" onAction="#goToGameScreen" text="START GAME" />
             </children>
         </Pane>
     </bottom>
