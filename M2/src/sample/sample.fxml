@@ -42,7 +42,7 @@
                      </graphic></ToggleButton>
                </children>
             </HBox>
-            <Label layoutX="165.0" layoutY="86.0" styleClass="titleLabel" text="Forbidden Temple" textFill="WHITE" />
+            <Label layoutX="165.0" layoutY="86.0" styleClass="titleLabel" text="Forbidden Forest" textFill="WHITE" />
          </children>
       </Pane>
    </center>
