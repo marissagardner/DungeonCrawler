@@ -17,10 +17,10 @@ public class start_screen_controllerTest extends ApplicationTest {
 
     @Test
     public void testPlay() {
-        //clickOn("Start Game!");
-//        assertEquals("Start", Settings.gameState);
-//        clickOn("#startButton");
-//        assertEquals("Menu", Settings.gameState);
+        clickOn("Start Game!");
+        assertEquals("Start", Settings.gameState);
+        clickOn("#startButton");
+        assertEquals("Menu", Settings.gameState);
 
     }
 

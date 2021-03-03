@@ -3,6 +3,6 @@ package sample;
 public class Settings {
     public static Difficulty gameDifficulty;
     public static int money;
-    public static String gameState;
+    public static GameState gameState;
 
 }

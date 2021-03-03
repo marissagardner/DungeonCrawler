@@ -28,8 +28,8 @@ public class menu_screen_controllerTest extends ApplicationTest {
     @Test
     public void testPlay() {
       //  clickOn("#startGame");
-//        Node dialogPane = lookup(".dialog-pane").query();
-//        from(dialogPane).lookup((Text t) -> t.getText().startsWith("Input a valid name."));
-      //  verifyThat("OK", NodeMatchers.isVisible());
+        Node dialogPane = lookup(".dialog-pane").query();
+        from(dialogPane).lookup((Text t) -> t.getText().startsWith("Input a valid name."));
+        verifyThat("OK", NodeMatchers.isVisible());
     }
 }
