@@ -89,5 +89,31 @@ public class MainTest extends ApplicationTest {
         verifyThat("OK", NodeMatchers.isVisible());
     }
 
+    @Test
+    public void testNoDifficulty() {
+        clickOn("#startButton");
+        clickOn("#nameInput");
+        write("Ruhan");
+        clickOn("#easy");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        Node dialogPane = lookup(".dialog-pane").query();
+        from(dialogPane).lookup((Text t) -> t.getText().startsWith("Please choose your difficulty."));
+        verifyThat("OK", NodeMatchers.isVisible());
+    }
+
+    @Test
+    public void testAxeMedium() {
+        clickOn("#startButton");
+        clickOn("#nameInput");
+        write("Ruhan");
+        clickOn("#axe");
+        clickOn("#medium");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+    }
+
 }
 
