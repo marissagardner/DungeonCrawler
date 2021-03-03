@@ -115,5 +115,40 @@ public class MainTest extends ApplicationTest {
         sleep(1500);
     }
 
+    @Test
+    public void testEasyMoney() {
+        clickOn("#startButton");
+        clickOn("#nameInput");
+        write("Avi");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        assertEquals(100, Settings.money);
+    }
+
+    @Test
+    public void testMediumMoney() {
+        clickOn("#startButton");
+        clickOn("#nameInput");
+        write("Avi");
+        clickOn("#medium");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        assertEquals(75, Settings.money);
+    }
+
+    @Test
+    public void testHardMoney() {
+        clickOn("#startButton");
+        clickOn("#nameInput");
+        write("Avi");
+        clickOn("#hard");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        assertEquals(50, Settings.money);
+    }
+
 }
 
