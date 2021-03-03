@@ -36,5 +36,30 @@ public class MainTest extends ApplicationTest {
         sleep(1500);
         verifyThat("#gameTitle", NodeMatchers.isVisible());
     }
+
+    @Test
+    public void testSwitchToGameScreen() {
+        //valid inputs
+        clickOn("#startButton");
+        clickOn("#nameInput");
+        write("Avi");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        verifyThat("#money", NodeMatchers.isVisible());
+    }
+
+    @Test
+    public void testNoName() {
+        clickOn("#startButton");
+        clickOn("#nameInput");
+        write("");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        Node dialogPane = lookup(".dialog-pane").query();
+        from(dialogPane).lookup((Text t) -> t.getText().startsWith("Input a valid name."));
+        verifyThat("OK", NodeMatchers.isVisible());
+    }
 }
 
