@@ -16,11 +16,11 @@
         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
                 <Label alignment="CENTER" layoutX="370.0" layoutY="200.0" styleClass="settingLabels" text="Enter Name:" textFill="WHITE" />
-                <TextField layoutX="386.0" layoutY="230.0" prefWidth="186.0" />
+                <TextField fx:id="nameInput" layoutX="386.0" layoutY="230.0" prefWidth="186.0" />
                 <Label contentDisplay="CENTER" layoutX="350.0" layoutY="283.0" styleClass="settingLabels" text="Select Weapon" textFill="WHITE" />
                 <HBox alignment="CENTER" layoutX="279.0" layoutY="313.0" prefHeight="50.0" prefWidth="400.0" spacing="100.0">
                     <children>
-                        <ToggleButton contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleWeaponToggleClick" prefHeight="70.0" prefWidth="70.0" selected="true" styleClass="weaponButton" textFill="WHITE">
+                        <ToggleButton fx:id="sword" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleWeaponToggleClick" prefHeight="70.0" prefWidth="70.0" selected="true" styleClass="weaponButton" textFill="WHITE">
                             <toggleGroup>
                                 <ToggleGroup fx:id="weaponGroup" />
                             </toggleGroup>
@@ -31,7 +31,7 @@
                                     </image></ImageView>
                             </graphic>
                         </ToggleButton>
-                        <ToggleButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleWeaponToggleClick" prefHeight="70.0" prefWidth="70.0" styleClass="weaponButton" toggleGroup="$weaponGroup">
+                        <ToggleButton fx:id="bow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleWeaponToggleClick" prefHeight="70.0" prefWidth="70.0" styleClass="weaponButton" toggleGroup="$weaponGroup">
                             <graphic>
                                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -39,7 +39,7 @@
                                     </image>
                                 </ImageView>
                             </graphic></ToggleButton>
-                        <ToggleButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleWeaponToggleClick" prefHeight="70.0" prefWidth="70.0" styleClass="weaponButton" toggleGroup="$weaponGroup">
+                        <ToggleButton fx:id="axe" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#handleWeaponToggleClick" prefHeight="70.0" prefWidth="70.0" styleClass="weaponButton" toggleGroup="$weaponGroup">
                             <graphic>
                                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -49,7 +49,7 @@
                             </graphic></ToggleButton>
                     </children>
                 </HBox>
-                <Label layoutX="165.0" layoutY="86.0" styleClass="titleLabel" text="Forbidden Temple" textFill="WHITE" />
+                <Label fx:id="gameTitle" layoutX="165.0" layoutY="86.0" styleClass="titleLabel" text="Forbidden Forest" textFill="WHITE" />
             </children>
         </Pane>
     </center>
@@ -59,15 +59,15 @@
                 <Label alignment="CENTER" layoutX="310.0" layoutY="32.0" styleClass="settingLabels" text="Select Difficulty" textFill="WHITE" />
                 <HBox alignment="CENTER" layoutX="280.0" layoutY="54.0" prefHeight="50.0" prefWidth="400.0" spacing="100.0">
                     <children>
-                        <ToggleButton mnemonicParsing="false" onMouseClicked="#handleDiffcultyToggleClick" prefHeight="24.0" selected="true" styleClass="difficultyLabels" text="Easy">
+                        <ToggleButton fx:id="easy" mnemonicParsing="false" onMouseClicked="#handleDiffcultyToggleClick" prefHeight="24.0" selected="true" styleClass="difficultyLabels" text="Easy">
                             <toggleGroup>
                                 <ToggleGroup fx:id="difficultyGroup" />
                             </toggleGroup></ToggleButton>
-                        <ToggleButton mnemonicParsing="false" onMouseClicked="#handleDiffcultyToggleClick" prefHeight="24.0" styleClass="difficultyLabels" text="Medium" toggleGroup="$difficultyGroup" />
-                        <ToggleButton mnemonicParsing="false" onMouseClicked="#handleDiffcultyToggleClick" prefHeight="24.0" styleClass="difficultyLabels" text="Hard" toggleGroup="$difficultyGroup" />
+                        <ToggleButton fx:id="medium" mnemonicParsing="false" onMouseClicked="#handleDiffcultyToggleClick" prefHeight="24.0" styleClass="difficultyLabels" text="Medium" toggleGroup="$difficultyGroup" />
+                        <ToggleButton fx:id="hard" mnemonicParsing="false" onMouseClicked="#handleDiffcultyToggleClick" prefHeight="24.0" styleClass="difficultyLabels" text="Hard" toggleGroup="$difficultyGroup" />
                     </children>
                 </HBox>
-                <Button layoutX="437.0" layoutY="133.0" mnemonicParsing="false" onAction="#goToGameScreen" text="START GAME" />
+                <Button fx:id="startGame" layoutX="437.0" layoutY="133.0" mnemonicParsing="false" onAction="#goToGameScreen" text="START GAME" />
             </children>
         </Pane>
     </bottom>
