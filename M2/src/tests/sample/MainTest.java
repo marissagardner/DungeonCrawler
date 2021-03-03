@@ -61,5 +61,33 @@ public class MainTest extends ApplicationTest {
         from(dialogPane).lookup((Text t) -> t.getText().startsWith("Input a valid name."));
         verifyThat("OK", NodeMatchers.isVisible());
     }
+
+    @Test
+    public void testWhitespaceName() {
+        clickOn("#startButton");
+        clickOn("#nameInput");
+        write("    ");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        Node dialogPane = lookup(".dialog-pane").query();
+        from(dialogPane).lookup((Text t) -> t.getText().startsWith("Input a valid name."));
+        verifyThat("OK", NodeMatchers.isVisible());
+    }
+
+    @Test
+    public void testNoWeapon() {
+        clickOn("#startButton");
+        clickOn("#nameInput");
+        write("Avi");
+        clickOn("#sword");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        Node dialogPane = lookup(".dialog-pane").query();
+        from(dialogPane).lookup((Text t) -> t.getText().startsWith("Please select a weapon."));
+        verifyThat("OK", NodeMatchers.isVisible());
+    }
+
 }
 

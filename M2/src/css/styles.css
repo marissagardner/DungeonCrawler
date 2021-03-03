@@ -1,8 +1,8 @@
-
 @font-face {
     font-family: 'Press Start 2P', cursive;
     src: url('../fonts/PressStart2P-Regular.ttf') format("ttf");
 }
+
 .start {
     -fx-background-image: url("../img/backg.jpg");
     -fx-background-size: 100% 100%;
