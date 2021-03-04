@@ -1,11 +1,7 @@
-package sample;
+package sample.Java;
 
-import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class game_screen_controller {
 

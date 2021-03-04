@@ -3,13 +3,12 @@ package sample;
 import javafx.scene.Node;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.matcher.base.NodeMatchers;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import sample.Java.GameState;
+import sample.Java.Main;
+import sample.Java.Settings;
 
 import static org.junit.Assert.*;
 import static org.testfx.api.FxAssert.verifyThat;

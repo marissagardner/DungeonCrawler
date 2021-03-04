@@ -1,4 +1,4 @@
-package sample;
+package sample.Java;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -85,20 +84,17 @@ public class menu_screen_controller {
             a.show();
         } else {
             if (easy.isSelected()) {
-                System.out.println("Easy");
                 Settings.gameDifficulty = Difficulty.EASY;
                 Settings.money = 100;
             } else if (medium.isSelected()) {
-                System.out.println("Medium");
                 Settings.gameDifficulty = Difficulty.MEDIUM;
                 Settings.money = 75;
             } else if (hard.isSelected()) {
-                System.out.println("Hard");
                 Settings.gameDifficulty = Difficulty.HARD;
                 Settings.money = 50;
             }
 
-            Parent menuParent = FXMLLoader.load(getClass().getResource("game_screen.fxml"));
+            Parent menuParent = FXMLLoader.load(getClass().getResource("../FXML/game_screen.fxml"));
             Scene menuScene = new Scene(menuParent, 960, 600);
 
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

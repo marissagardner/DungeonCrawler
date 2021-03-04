@@ -1,4 +1,4 @@
-package sample;
+package sample.Java;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class start_screen_controller {
@@ -24,8 +23,7 @@ public class start_screen_controller {
 
     public void goToMenuScreen(ActionEvent event) throws IOException {
         Settings.gameState = GameState.MENU_SCREEN;
-        System.out.println("Switched to menu screen");
-        Parent menuParent = FXMLLoader.load(getClass().getResource("menu_screen.fxml"));
+        Parent menuParent = FXMLLoader.load(getClass().getResource("../FXML/menu_screen.fxml"));
         Scene menuScene = new Scene(menuParent, 960, 600);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
