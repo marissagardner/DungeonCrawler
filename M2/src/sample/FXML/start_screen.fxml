@@ -12,7 +12,7 @@
             styleClass="bodybg" stylesheets="@../../css/styles.css"
             xmlns="http://javafx.com/javafx/15.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="sample.Java.start_screen_controller">
+            fx:controller="sample.Java.StartScreenController">
     <top>
         <HBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
             <children>

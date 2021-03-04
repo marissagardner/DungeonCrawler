@@ -23,10 +23,10 @@ public class MainTest extends ApplicationTest {
 
     @Test
     public void testStart() {
-        assertEquals(GameState.START_SCREEN, Settings.gameState);
+        assertEquals(GameState.START_SCREEN, Settings.getGameState());
         clickOn("#startButton");
         sleep(1500);
-        assertEquals(GameState.MENU_SCREEN, Settings.gameState);
+        assertEquals(GameState.MENU_SCREEN, Settings.getGameState());
     }
 
     @Test
@@ -98,7 +98,8 @@ public class MainTest extends ApplicationTest {
         clickOn("#startGame");
         sleep(1500);
         Node dialogPane = lookup(".dialog-pane").query();
-        from(dialogPane).lookup((Text t) -> t.getText().startsWith("Please choose your difficulty."));
+        from(dialogPane).lookup((Text t) -> t.getText().startsWith("Please choose "
+                + "your difficulty."));
         verifyThat("OK", NodeMatchers.isVisible());
     }
 
@@ -122,7 +123,7 @@ public class MainTest extends ApplicationTest {
         sleep(1500);
         clickOn("#startGame");
         sleep(1500);
-        assertEquals(100, Settings.money);
+        assertEquals(100, Settings.getMoney());
     }
 
     @Test
@@ -134,7 +135,7 @@ public class MainTest extends ApplicationTest {
         sleep(1500);
         clickOn("#startGame");
         sleep(1500);
-        assertEquals(75, Settings.money);
+        assertEquals(75, Settings.getMoney());
     }
 
     @Test
@@ -146,7 +147,7 @@ public class MainTest extends ApplicationTest {
         sleep(1500);
         clickOn("#startGame");
         sleep(1500);
-        assertEquals(50, Settings.money);
+        assertEquals(50, Settings.getMoney());
     }
 
 }

@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Settings.gameState = GameState.START_SCREEN;
+        Settings.setGameState(GameState.START_SCREEN);
         Parent root = FXMLLoader.load(getClass().getResource("../FXML/start_screen.fxml"));
         primaryStage.setTitle("Forbidden Forest");
         primaryStage.setScene(new Scene(root, 960, 600));
