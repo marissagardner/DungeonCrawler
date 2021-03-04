@@ -27,5 +27,6 @@
     <orderEntry type="library" name="org.testfx:testfx-core:4.0.15-alpha" level="project" />
     <orderEntry type="library" name="org.testfx:testfx-junit:4.0.15-alpha" level="project" />
     <orderEntry type="library" name="javafx-swt" level="application" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
