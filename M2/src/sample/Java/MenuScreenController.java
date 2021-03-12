@@ -105,9 +105,9 @@ public class MenuScreenController {
             window.setMinWidth(960);
             window.setMaxHeight(600);
             window.setMaxWidth(960);
-
             window.show();
+
+            menuScene.getRoot().requestFocus();
         }
     }
-
 }

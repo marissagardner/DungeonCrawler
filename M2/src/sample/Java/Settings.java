@@ -4,6 +4,15 @@ public class Settings {
     private static Difficulty gameDifficulty;
     private static int money;
     private static GameState gameState;
+    private static DungeonRoom currentRoom;
+
+    public static DungeonRoom getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public static void setCurrentRoom(DungeonRoom room) {
+        Settings.currentRoom = room;
+    }
 
     public static Difficulty getGameDifficulty() {
         return gameDifficulty;
