@@ -6,6 +6,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -21,6 +22,9 @@ public class GameScreenController {
 
     @FXML
     private Text money;
+
+    @FXML
+    private ImageView character;
 
     @FXML
     public void initialize() {
@@ -179,7 +183,7 @@ public class GameScreenController {
     @FXML
     public void enterDungeon(KeyEvent event) throws IOException{
 
-        if (event.getCode().equals(KeyCode.ENTER)) {
+        if (character.getLayoutY() <= -150) {
             Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
             Scene menuScene = new Scene(menuParent, 960, 600);
 
@@ -192,6 +196,27 @@ public class GameScreenController {
             window.show();
 
             menuScene.getRoot().requestFocus();
+        }
+        if (event.getCode().equals(KeyCode.UP)) {
+            if (character.getLayoutY() - 9 >= 0 || (character.getLayoutX() >= 280 && character.getLayoutX() <= 400)) {
+                character.setLayoutY(character.getLayoutY() - 9);
+            }
+        } else if (event.getCode().equals(KeyCode.DOWN)) {
+            if (character.getLayoutY() + 9 <= 198) {
+                character.setLayoutY(character.getLayoutY() + 9);
+            }
+        } else if (event.getCode().equals(KeyCode.LEFT)) {
+            if (character.getLayoutX() - 9 >= 0 && character.getLayoutY() >= 0) {
+                character.setLayoutX(character.getLayoutX() - 9);
+            } else if (character.getLayoutX() - 9 >= 280) {
+                character.setLayoutX(character.getLayoutX() - 9);
+            }
+        } else if (event.getCode().equals(KeyCode.RIGHT)) {
+            if (character.getLayoutX() + 9 <= 672 && character.getLayoutY() >= 0) {
+                character.setLayoutX(character.getLayoutX() + 9);
+            } else if (character.getLayoutX() + 9 <= 400) {
+                character.setLayoutX(character.getLayoutX() + 9);
+            }
         }
     }
 }
