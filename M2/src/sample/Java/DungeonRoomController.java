@@ -6,6 +6,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -27,6 +28,9 @@ public class DungeonRoomController {
     private Text money;
 
     @FXML
+    private ImageView character;
+
+    @FXML
     public void initialize() {
         String playerMoney = "Money: " + Settings.getMoney();
         String roomNum = "Room: " + Settings.getCurrentRoom().getRoomNum();
@@ -41,81 +45,157 @@ public class DungeonRoomController {
 
     @FXML
     public void move(KeyEvent event) throws IOException {
-        if(acceptInput && event.getCode().equals((KeyCode.UP))) {
-            if(Settings.getCurrentRoom().hasNorthExit()) {
-                Settings.setCurrentRoom(Settings.getCurrentRoom().getNorthRoom());
-                acceptInput = false;
+        if(event.getCode().equals((KeyCode.UP))) {
 
-                Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
-                Scene menuScene = new Scene(menuParent, 960, 600);
-
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(menuScene);
-                window.setMinHeight(600);
-                window.setMinWidth(960);
-                window.setMaxHeight(600);
-                window.setMaxWidth(960);
-                window.show();
-
-                menuScene.getRoot().requestFocus();
+            if (character.getLayoutY() - 9 >= 0 && character.getLayoutX() >= 0 && character.getLayoutX() <= 672) {
+                character.setLayoutY(character.getLayoutY() - 9);
             }
-        } else if(acceptInput && event.getCode().equals((KeyCode.DOWN))) {
-            if(Settings.getCurrentRoom().hasSouthExit()) {
-                Settings.setCurrentRoom(Settings.getCurrentRoom().getSouthRoom());
-                acceptInput = false;
 
-                Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
-                Scene menuScene = new Scene(menuParent, 960, 600);
+            if (Settings.getCurrentRoom().hasNorthExit()) {
+                if (character.getLayoutX() > 280 && character.getLayoutX() < 400) {
+                    character.setLayoutY(character.getLayoutY() - 9);
+                }
+                if (character.getLayoutY() <= -150) {
+                    Settings.setCurrentRoom(Settings.getCurrentRoom().getNorthRoom());
+                    acceptInput = false;
 
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(menuScene);
-                window.setMinHeight(600);
-                window.setMinWidth(960);
-                window.setMaxHeight(600);
-                window.setMaxWidth(960);
-                window.show();
+                    Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
+                    Scene menuScene = new Scene(menuParent, 960, 600);
 
-                menuScene.getRoot().requestFocus();
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(menuScene);
+                    window.setMinHeight(600);
+                    window.setMinWidth(960);
+                    window.setMaxHeight(600);
+                    window.setMaxWidth(960);
+                    window.show();
+
+                    menuScene.getRoot().requestFocus();
+                }
             }
-        } else if(acceptInput && event.getCode().equals((KeyCode.RIGHT))) {
-            if(Settings.getCurrentRoom().hasEastExit()) {
-                Settings.setCurrentRoom(Settings.getCurrentRoom().getEastRoom());
-                acceptInput = false;
 
-                Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
-                Scene menuScene = new Scene(menuParent, 960, 600);
-
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(menuScene);
-                window.setMinHeight(600);
-                window.setMinWidth(960);
-                window.setMaxHeight(600);
-                window.setMaxWidth(960);
-                window.show();
-
-                menuScene.getRoot().requestFocus();
+            if (Settings.getCurrentRoom().hasEastExit()) {
+                if (character.getLayoutX() > 672 && character.getLayoutY() - 9 >= 150) {
+                    character.setLayoutY(character.getLayoutY() - 9);
+                }
             }
-        } else if(acceptInput && event.getCode().equals((KeyCode.LEFT))) {
+
+            if (Settings.getCurrentRoom().hasWestExit()) {
+                if (character.getLayoutX() < 0 && character.getLayoutY() - 9 >= 0) {
+                    character.setLayoutY(character.getLayoutY() - 9);
+                }
+            }
+        } else if (event.getCode().equals((KeyCode.DOWN))) {
+
+            if (character.getLayoutY() + 9 <= 198 && character.getLayoutX() >= 0 && character.getLayoutX() <= 672) {
+                character.setLayoutY(character.getLayoutY() + 9);
+            }
+
+            if (Settings.getCurrentRoom().hasSouthExit()) {
+                if (character.getLayoutX() > 280 && character.getLayoutX() < 400) {
+                    character.setLayoutY(character.getLayoutY() + 9);
+                }
+
+                if (character.getLayoutY() >= 380) {
+                    Settings.setCurrentRoom(Settings.getCurrentRoom().getSouthRoom());
+                    acceptInput = false;
+
+                    Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
+                    Scene menuScene = new Scene(menuParent, 960, 600);
+
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(menuScene);
+                    window.setMinHeight(600);
+                    window.setMinWidth(960);
+                    window.setMaxHeight(600);
+                    window.setMaxWidth(960);
+                    window.show();
+
+                    menuScene.getRoot().requestFocus();
+                }
+            }
+
+            if (Settings.getCurrentRoom().hasEastExit()) {
+                if (character.getLayoutX() > 672 && character.getLayoutY() + 9 <= 198) {
+                    character.setLayoutY(character.getLayoutY() + 9);
+                }
+            }
+
+            if (Settings.getCurrentRoom().hasWestExit()) {
+                if (character.getLayoutX() < 0 && character.getLayoutY() + 9 <= 48) {
+                    character.setLayoutY(character.getLayoutY() + 9);
+                }
+            }
+        } else if (event.getCode().equals((KeyCode.RIGHT))) {
+            if (character.getLayoutX() + 9 <= 672 && character.getLayoutY() >= 0 && character.getLayoutY() <= 198) {
+                character.setLayoutX(character.getLayoutX() + 9);
+            }
+
+            if (Settings.getCurrentRoom().hasEastExit()) {
+                if (character.getLayoutY() > 150 && character.getLayoutY() < 198) {
+                    character.setLayoutX(character.getLayoutX() + 9);
+                }
+
+                if (character.getLayoutX() >= 800) {
+                    Settings.setCurrentRoom(Settings.getCurrentRoom().getEastRoom());
+                    acceptInput = false;
+
+                    Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
+                    Scene menuScene = new Scene(menuParent, 960, 600);
+
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(menuScene);
+                    window.setMinHeight(600);
+                    window.setMinWidth(960);
+                    window.setMaxHeight(600);
+                    window.setMaxWidth(960);
+                    window.show();
+
+                    menuScene.getRoot().requestFocus();
+                }
+            }
+
+            if (Settings.getCurrentRoom().hasNorthExit() || Settings.getCurrentRoom().hasSouthExit()) {
+                if ((character.getLayoutY() < 0 || character.getLayoutY() > 198) && character.getLayoutX() + 9 <= 400) {
+                    character.setLayoutX(character.getLayoutX() + 9);
+                }
+            }
+
+        } else if (event.getCode().equals((KeyCode.LEFT))) {
+
+            if (character.getLayoutX() - 9 >= 0 && character.getLayoutY() >= 0 && character.getLayoutY() <= 198) {
+                character.setLayoutX(character.getLayoutX() - 9);
+            }
+
             if(Settings.getCurrentRoom().hasWestExit()) {
-                Settings.setCurrentRoom(Settings.getCurrentRoom().getWestRoom());
-                acceptInput = false;
+                if (character.getLayoutY() > 0 && character.getLayoutY() < 48) {
+                    character.setLayoutX(character.getLayoutX() - 9);
+                }
 
-                Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
-                Scene menuScene = new Scene(menuParent, 960, 600);
+                if (character.getLayoutX() <= -128) {
+                    Settings.setCurrentRoom(Settings.getCurrentRoom().getWestRoom());
+                    acceptInput = false;
 
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(menuScene);
-                window.setMinHeight(600);
-                window.setMinWidth(960);
-                window.setMaxHeight(600);
-                window.setMaxWidth(960);
-                window.show();
+                    Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
+                    Scene menuScene = new Scene(menuParent, 960, 600);
 
-                menuScene.getRoot().requestFocus();
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(menuScene);
+                    window.setMinHeight(600);
+                    window.setMinWidth(960);
+                    window.setMaxHeight(600);
+                    window.setMaxWidth(960);
+                    window.show();
+
+                    menuScene.getRoot().requestFocus();
+                }
             }
-        }
-        if(event.getCode().equals(KeyCode.ENTER)) {
-            acceptInput = true;
+
+            if (Settings.getCurrentRoom().hasNorthExit() || Settings.getCurrentRoom().hasSouthExit()) {
+                if ((character.getLayoutY() < 0 || character.getLayoutY() > 198) && character.getLayoutX() - 9 >= 280) {
+                    character.setLayoutX(character.getLayoutX() - 9);
+                }
+            }
         }
     }
 }
