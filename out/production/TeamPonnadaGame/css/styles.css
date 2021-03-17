@@ -67,8 +67,19 @@
     -fx-fill: white;
 }
 
+.endTitleLabel {
+    -fx-font-family: 'Press Start 2P';
+    -fx-font-size: 35;
+    -fx-fill: white;
+}
+
 .money {
     -fx-font-family: 'Press Start 2P';
     -fx-font-size: 10;
     -fx-fill: white;
+}
+
+.endbg {
+    -fx-background-image: url("../img/exit.jpg");
+    -fx-background-size: 100% 100%;
 }
