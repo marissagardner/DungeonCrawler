@@ -22,12 +22,14 @@ public class DungeonRoom {
     private boolean westFilled;
     private boolean exitsFilled;
 
+    private boolean isEndRoom;
+
     private DungeonRoom northRoom;
     private DungeonRoom southRoom;
     private DungeonRoom eastRoom;
     private DungeonRoom westRoom;
 
-    public DungeonRoom(int north, int south, int east, int west, int num) {
+    public DungeonRoom(int north, int south, int east, int west, int num, boolean isEnd) {
         this.numExits = north + south + east + west;
         this.roomPath = "../FXML/dungeon_room_" + north + south + east + west + ".fxml";
         this.roomNum = num;
@@ -47,6 +49,11 @@ public class DungeonRoom {
         this.southRoom = null;
         this.eastRoom = null;
         this.westRoom = null;
+
+        this.isEndRoom = isEnd;
+        if(isEnd) {
+            this.roomPath = "../FXML/exit_room.fxml";
+        }
     }
 
     public String getRoomPath() {
@@ -54,6 +61,10 @@ public class DungeonRoom {
     }
 
     public int getRoomNum() { return roomNum; }
+
+    public int getNumExits() {
+        return numExits;
+    }
 
     public boolean hasNorthExit() {
         return hasNorthExit;
@@ -133,25 +144,25 @@ public class DungeonRoom {
 
     public void fillRooms() {
         if(hasNorthExit && !northFilled) {
-            DungeonRoom sRoom = new DungeonRoom(0,1,0,0, 100);
+            DungeonRoom sRoom = new DungeonRoom(0,1,0,0, 100, false);
             this.northRoom = sRoom;
             sRoom.setSouthRoom(this);
             this.northFilled = true;
         }
         if(hasSouthExit && !southFilled) {
-            DungeonRoom nRoom = new DungeonRoom(1,0,0,0, 100);
+            DungeonRoom nRoom = new DungeonRoom(1,0,0,0, 100, false);
             this.southRoom = nRoom;
             nRoom.setNorthRoom(this);
             this.southFilled = true;
         }
         if(hasEastExit && !eastFilled) {
-            DungeonRoom wRoom = new DungeonRoom(0,0,0,1,100);
+            DungeonRoom wRoom = new DungeonRoom(0,0,0,1,100, false);
             this.eastRoom = wRoom;
             wRoom.setWestRoom(this);
             this.eastFilled = true;
         }
         if(hasWestExit && !westFilled) {
-            DungeonRoom eRoom = new DungeonRoom(0,0,1,0,100);
+            DungeonRoom eRoom = new DungeonRoom(0,0,1,0,100, false);
             this.westRoom = eRoom;
             eRoom.setEastRoom(this);
             this.westFilled = true;
