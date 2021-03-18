@@ -14,6 +14,8 @@ import sample.Java.Settings;
 import static org.junit.Assert.*;
 import static org.testfx.api.FxAssert.verifyThat;
 
+//This file contains test cases for M3
+
 public class MainTest2 extends ApplicationTest {
 
     @Override
@@ -49,6 +51,60 @@ public class MainTest2 extends ApplicationTest {
         }
         sleep(1500);
         assertEquals(0, Settings.getCurrentRoom().getRoomNum());
+    }
+
+    @Test
+    public void testRoom0NorthExit() {
+        assertEquals(GameState.START_SCREEN, Settings.getGameState());
+        clickOn("#startButton");
+        sleep(1500);
+        assertEquals(GameState.MENU_SCREEN, Settings.getGameState());
+        write("Avi");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        verifyThat("#money", NodeMatchers.isVisible());
+        for (int i = 0; i < 29; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        sleep(1500);
+        assertEquals(0, Settings.getCurrentRoom().getRoomNum());
+        int NorthExitRoomNum = Settings.getCurrentRoom().getNorthRoom().getRoomNum();
+        for (int i = 0; i < 22; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        sleep(1500);
+        assertEquals(NorthExitRoomNum, Settings.getCurrentRoom().getRoomNum());
+    }
+
+    @Test
+    public void testRoom0EastExit() {
+        assertEquals(GameState.START_SCREEN, Settings.getGameState());
+        clickOn("#startButton");
+        sleep(1500);
+        assertEquals(GameState.MENU_SCREEN, Settings.getGameState());
+        write("Avi");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        verifyThat("#money", NodeMatchers.isVisible());
+        for (int i = 0; i < 29; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        sleep(1500);
+        assertEquals(0, Settings.getCurrentRoom().getRoomNum());
+        int EastExitRoomNum = Settings.getCurrentRoom().getEastRoom().getRoomNum();
+        for (int i = 0; i < 37; i++) {
+            press(KeyCode.RIGHT).release(KeyCode.RIGHT);
+        }
+        for (int i = 0; i < 8; i++) {
+            press(KeyCode.DOWN).release(KeyCode.DOWN);
+        }
+        for (int i = 0; i < 15; i++) {
+            press(KeyCode.RIGHT).release(KeyCode.RIGHT);
+        }
+        sleep(1500);
+        assertEquals(EastExitRoomNum, Settings.getCurrentRoom().getRoomNum());
     }
 }
 
