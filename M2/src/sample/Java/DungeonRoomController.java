@@ -45,7 +45,7 @@ public class DungeonRoomController {
 
     @FXML
     public void move(KeyEvent event) throws IOException {
-        if(event.getCode().equals((KeyCode.UP))) {
+        if (event.getCode().equals((KeyCode.UP))) {
 
             if (character.getLayoutY() - 9 >= 0 && character.getLayoutX() >= 0 && character.getLayoutX() <= 672) {
                 character.setLayoutY(character.getLayoutY() - 9);
@@ -167,7 +167,7 @@ public class DungeonRoomController {
                 character.setLayoutX(character.getLayoutX() - 9);
             }
 
-            if(Settings.getCurrentRoom().hasWestExit()) {
+            if (Settings.getCurrentRoom().hasWestExit()) {
                 if (character.getLayoutY() > 0 && character.getLayoutY() < 48) {
                     character.setLayoutX(character.getLayoutX() - 9);
                 }

@@ -51,7 +51,7 @@ public class DungeonRoom {
         this.westRoom = null;
 
         this.isEndRoom = isEnd;
-        if(isEnd) {
+        if (isEnd) {
             this.roomPath = "../FXML/exit_room.fxml";
         }
     }
@@ -60,7 +60,9 @@ public class DungeonRoom {
         return roomPath;
     }
 
-    public int getRoomNum() { return roomNum; }
+    public int getRoomNum() {
+        return roomNum;
+    }
 
     public int getNumExits() {
         return numExits;
@@ -143,26 +145,26 @@ public class DungeonRoom {
     }
 
     public void fillRooms() {
-        if(hasNorthExit && !northFilled) {
-            DungeonRoom sRoom = new DungeonRoom(0,1,0,0, 100, false);
+        if (hasNorthExit && !northFilled) {
+            DungeonRoom sRoom = new DungeonRoom(0, 1, 0, 0, 100, false);
             this.northRoom = sRoom;
             sRoom.setSouthRoom(this);
             this.northFilled = true;
         }
-        if(hasSouthExit && !southFilled) {
-            DungeonRoom nRoom = new DungeonRoom(1,0,0,0, 100, false);
+        if (hasSouthExit && !southFilled) {
+            DungeonRoom nRoom = new DungeonRoom(1, 0, 0, 0, 100, false);
             this.southRoom = nRoom;
             nRoom.setNorthRoom(this);
             this.southFilled = true;
         }
-        if(hasEastExit && !eastFilled) {
-            DungeonRoom wRoom = new DungeonRoom(0,0,0,1,100, false);
+        if (hasEastExit && !eastFilled) {
+            DungeonRoom wRoom = new DungeonRoom(0, 0, 0, 1, 100, false);
             this.eastRoom = wRoom;
             wRoom.setWestRoom(this);
             this.eastFilled = true;
         }
-        if(hasWestExit && !westFilled) {
-            DungeonRoom eRoom = new DungeonRoom(0,0,1,0,100, false);
+        if (hasWestExit && !westFilled) {
+            DungeonRoom eRoom = new DungeonRoom(0, 0, 1, 0, 100, false);
             this.westRoom = eRoom;
             eRoom.setEastRoom(this);
             this.westFilled = true;
@@ -172,23 +174,23 @@ public class DungeonRoom {
 
     public boolean isLinkedTo(DungeonRoom room) {
         boolean linked = false;
-        if(hasNorthExit && northFilled) {
-            if(this.northRoom.equals(room)) {
+        if (hasNorthExit && northFilled) {
+            if (this.northRoom.equals(room)) {
                 linked = true;
             }
         }
-        if(hasSouthExit && southFilled) {
-            if(this.southRoom.equals(room)) {
+        if (hasSouthExit && southFilled) {
+            if (this.southRoom.equals(room)) {
                 linked = true;
             }
         }
-        if(hasEastExit && eastFilled) {
-            if(this.eastRoom.equals(room)) {
+        if (hasEastExit && eastFilled) {
+            if (this.eastRoom.equals(room)) {
                 linked = true;
             }
         }
-        if(hasWestExit && westFilled) {
-            if(this.westRoom.equals(room)) {
+        if (hasWestExit && westFilled) {
+            if (this.westRoom.equals(room)) {
                 linked = true;
             }
         }

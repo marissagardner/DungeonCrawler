@@ -7,25 +7,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="endbg" stylesheets="@../../css/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Java.EndScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            styleClass="endbg" stylesheets="@../../css/styles.css"
+            xmlns="http://javafx.com/javafx/15.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.Java.EndScreenController">
     <top>
         <HBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
             <children>
-                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="endTitleLabel" text="Congratulations!" textAlignment="CENTER" wrappingWidth="600.0">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0"
+                      styleClass="endTitleLabel" text="Congratulations!"
+                      textAlignment="CENTER" wrappingWidth="600.0">
                     <font>
-                        <Font name="Papyrus" size="80.0" />
+                        <Font name="Papyrus" size="80.0"/>
                     </font>
                     <HBox.margin>
-                        <Insets bottom="50.0" top="175.0" />
+                        <Insets bottom="50.0" top="175.0"/>
                     </HBox.margin>
                 </Text>
             </children>
         </HBox>
     </top>
     <center>
-        <Button fx:id="startButton" mnemonicParsing="false" onAction="#goToStartScreen" prefHeight="45.0" prefWidth="144.0" styleClass="startGame" text="Play Again?" BorderPane.alignment="CENTER">
+        <Button fx:id="startButton" mnemonicParsing="false"
+                onAction="#goToStartScreen" prefHeight="45.0" prefWidth="144.0"
+                styleClass="startGame" text="Play Again?"
+                BorderPane.alignment="CENTER">
             <font>
-                <Font name="Papyrus" size="16.0" />
+                <Font name="Papyrus" size="16.0"/>
             </font>
         </Button>
     </center>

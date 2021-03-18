@@ -33,10 +33,10 @@ public class GameScreenController {
 
         //array list of rooms, starts with main room
         ArrayList<DungeonRoom> rooms = new ArrayList<>();
-        rooms.add(new DungeonRoom(1,1,1,1, 0, false));
+        rooms.add(new DungeonRoom(1, 1, 1, 1, 0, false));
 
         //generates 20 more rooms, can change this number
-        for(int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             int roomType = 1 + (int) (Math.random() * 15);
 
             //does not allow "dead-end" rooms right now
@@ -47,8 +47,7 @@ public class GameScreenController {
             //converts to binary to create the room
             int[] bin = new int[4];
             int counter = 0;
-            while(roomType > 0)
-            {
+            while (roomType > 0) {
                 bin[counter] = roomType % 2;
                 roomType = roomType / 2;
                 counter++;
@@ -63,17 +62,17 @@ public class GameScreenController {
         ArrayList<DungeonRoom> eastRooms = new ArrayList<>();
         ArrayList<DungeonRoom> westRooms = new ArrayList<>();
 
-        for(DungeonRoom r: rooms) {
-            if(r.hasNorthExit()) {
+        for (DungeonRoom r : rooms) {
+            if (r.hasNorthExit()) {
                 northRooms.add(r);
             }
-            if(r.hasSouthExit()) {
+            if (r.hasSouthExit()) {
                 southRooms.add(r);
             }
-            if(r.hasEastExit()) {
+            if (r.hasEastExit()) {
                 eastRooms.add(r);
             }
-            if(r.hasWestExit()) {
+            if (r.hasWestExit()) {
                 westRooms.add(r);
             }
         }
@@ -81,12 +80,12 @@ public class GameScreenController {
         //Links rooms to each other
         //Alternates front and back of lists
         //Rooms cannot link to the same room twice
-        for(DungeonRoom r: rooms) {
-            if(!r.areExitsFilled()) {
+        for (DungeonRoom r : rooms) {
+            if (!r.areExitsFilled()) {
                 //process for filling north exit with a room
-                if(r.hasNorthExit() && !r.isNorthFilled() && southRooms.size() > 0) {
-                    for(int i = southRooms.size() - 1; i >= 0; i--) {
-                        if(r != southRooms.get(i) && !r.isLinkedTo(southRooms.get(i))) {
+                if (r.hasNorthExit() && !r.isNorthFilled() && southRooms.size() > 0) {
+                    for (int i = southRooms.size() - 1; i >= 0; i--) {
+                        if (r != southRooms.get(i) && !r.isLinkedTo(southRooms.get(i))) {
                             r.setNorthRoom(southRooms.get(i));
                             southRooms.get(i).setSouthRoom(r);
 
@@ -98,9 +97,9 @@ public class GameScreenController {
                     }
                 }
 
-                if(r.hasSouthExit() && !r.isSouthFilled() && northRooms.size() > 0) {
-                    for(int i = 0; i < northRooms.size(); i++) {
-                        if(r != northRooms.get(i) && !r.isLinkedTo(northRooms.get(i))) {
+                if (r.hasSouthExit() && !r.isSouthFilled() && northRooms.size() > 0) {
+                    for (int i = 0; i < northRooms.size(); i++) {
+                        if (r != northRooms.get(i) && !r.isLinkedTo(northRooms.get(i))) {
                             r.setSouthRoom(northRooms.get(i));
                             northRooms.get(i).setNorthRoom(r);
 
@@ -112,9 +111,9 @@ public class GameScreenController {
                     }
                 }
 
-                if(r.hasEastExit() && !r.isEastFilled() && westRooms.size() > 0) {
-                    for(int i = westRooms.size() - 1; i >= 0; i--) {
-                        if(r != westRooms.get(i) && !r.isLinkedTo(westRooms.get(i))) {
+                if (r.hasEastExit() && !r.isEastFilled() && westRooms.size() > 0) {
+                    for (int i = westRooms.size() - 1; i >= 0; i--) {
+                        if (r != westRooms.get(i) && !r.isLinkedTo(westRooms.get(i))) {
                             r.setEastRoom(westRooms.get(i));
                             westRooms.get(i).setWestRoom(r);
 
@@ -126,9 +125,9 @@ public class GameScreenController {
                     }
                 }
 
-                if(r.hasWestExit() && !r.isWestFilled() && eastRooms.size() > 0) {
-                    for(int i = 0; i < eastRooms.size(); i++) {
-                        if(r != eastRooms.get(i) && !r.isLinkedTo(eastRooms.get(i))) {
+                if (r.hasWestExit() && !r.isWestFilled() && eastRooms.size() > 0) {
+                    for (int i = 0; i < eastRooms.size(); i++) {
+                        if (r != eastRooms.get(i) && !r.isLinkedTo(eastRooms.get(i))) {
                             r.setWestRoom(eastRooms.get(i));
                             eastRooms.get(i).setEastRoom(r);
 
@@ -142,10 +141,30 @@ public class GameScreenController {
             }
         }
 
-        for(DungeonRoom r: rooms) {
-            if(!r.areExitsFilled()) {
+        for (DungeonRoom r : rooms) {
+            if (!r.areExitsFilled()) {
                 r.fillRooms();
             }
+        }
+
+        for (int i = 0; i < rooms.size(); i++) {
+            System.out.println("Room: " + rooms.get(i).getRoomNum());
+            System.out.println(rooms.get(i).getRoomPath());
+            if (rooms.get(i).hasNorthExit() && rooms.get(i).isNorthFilled()) {
+                System.out.println("North room number: " + rooms.get(i).getNorthRoom().getRoomNum());
+            }
+            if (rooms.get(i).hasSouthExit() && rooms.get(i).isSouthFilled()) {
+                System.out.println("South room number: " + rooms.get(i).getSouthRoom().getRoomNum());
+            }
+            if (rooms.get(i).hasEastExit() && rooms.get(i).isEastFilled()) {
+                System.out.println("East room number: " + rooms.get(i).getEastRoom().getRoomNum());
+            }
+            if (rooms.get(i).hasWestExit() && rooms.get(i).isWestFilled()) {
+                System.out.println("West room number: " + rooms.get(i).getWestRoom().getRoomNum());
+            }
+            System.out.println("Exits filled: " + rooms.get(i).areExitsFilled());
+            System.out.println();
+            System.out.println();
         }
 
         ArrayList<Integer> randoms = new ArrayList<>();
@@ -161,23 +180,23 @@ public class GameScreenController {
         randoms.add(30);
 
         int selector = (int) (Math.random() * randoms.size());
-        DungeonRoom random1 = new DungeonRoom(1,1,1,1, randoms.get(selector),false);
+        DungeonRoom random1 = new DungeonRoom(1, 1, 1, 1, randoms.get(selector), false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
-        DungeonRoom random2 = new DungeonRoom(0,1,1,0, randoms.get(selector),false);
+        DungeonRoom random2 = new DungeonRoom(0, 1, 1, 0, randoms.get(selector), false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
-        DungeonRoom random3 = new DungeonRoom(1,0,1,1, randoms.get(selector),false);
+        DungeonRoom random3 = new DungeonRoom(1, 0, 1, 1, randoms.get(selector), false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
-        DungeonRoom random4 = new DungeonRoom(0,1,0,1, randoms.get(selector),false);
+        DungeonRoom random4 = new DungeonRoom(0, 1, 0, 1, randoms.get(selector), false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
-        DungeonRoom random5 = new DungeonRoom(1,1,0,1, randoms.get(selector),false);
+        DungeonRoom random5 = new DungeonRoom(1, 1, 0, 1, randoms.get(selector), false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
-        DungeonRoom random6 = new DungeonRoom(1,0,1,1, randoms.get(selector),false);
-        DungeonRoom exit = new DungeonRoom(1,1,0,0,100,true);
+        DungeonRoom random6 = new DungeonRoom(1, 0, 1, 1, randoms.get(selector), false);
+        DungeonRoom exit = new DungeonRoom(1, 1, 0, 0, 100, true);
 
         rooms.add(random1);
         rooms.add(random2);
@@ -202,115 +221,103 @@ public class GameScreenController {
 
         DungeonRoom leadingRoom;
         boolean isRandom = false;
-        ArrayList<Integer> nums = new ArrayList<>();
-        nums.add(1);
-        nums.add(2);
-        nums.add(3);
-        nums.add(4);
 
         while (!isRandom) {
-            int lead = (int) (Math.random() * nums.size());
-            lead = nums.get(lead);
-            if(lead == 1) {
+            int lead = (int) (Math.random() * 4);
+            if (lead == 1) {
                 leadingRoom = rooms.get(0).getNorthRoom();
-                if(leadingRoom.hasWestExit()) {
+                if (leadingRoom.hasWestExit()) {
                     leadingRoom.getWestRoom().setEastRoom(new DungeonRoom(0, 0, 0, 1, 100, false));
                     leadingRoom.setWestRoom(random1);
                     random1.setEastRoom(leadingRoom);
                     isRandom = true;
-                } else if(leadingRoom.hasNorthExit()) {
+                } else if (leadingRoom.hasNorthExit()) {
                     leadingRoom.getNorthRoom().setSouthRoom(new DungeonRoom(1, 0, 0, 0, 100, false));
                     leadingRoom.setNorthRoom(random1);
                     random1.setSouthRoom(leadingRoom);
                     isRandom = true;
-                } else if(leadingRoom.hasEastExit()) {
+                } else if (leadingRoom.hasEastExit()) {
                     leadingRoom.getEastRoom().setWestRoom(new DungeonRoom(0, 0, 1, 0, 100, false));
                     leadingRoom.setEastRoom(random1);
                     random1.setWestRoom(leadingRoom);
                     isRandom = true;
                 }
             }
-            if(lead == 2) {
+            if (lead == 2) {
                 leadingRoom = rooms.get(0).getSouthRoom();
-                if(leadingRoom.hasWestExit()) {
+                if (leadingRoom.hasWestExit()) {
                     leadingRoom.getWestRoom().setEastRoom(new DungeonRoom(0, 0, 0, 1, 100, false));
                     leadingRoom.setWestRoom(random1);
                     random1.setEastRoom(leadingRoom);
                     isRandom = true;
-                } else if(leadingRoom.hasEastExit()) {
+                } else if (leadingRoom.hasEastExit()) {
                     leadingRoom.getEastRoom().setWestRoom(new DungeonRoom(0, 0, 1, 0, 100, false));
                     leadingRoom.setEastRoom(random1);
                     random1.setWestRoom(leadingRoom);
                     isRandom = true;
-                } else {
-                    nums.remove(lead);
                 }
             }
-            if(lead == 3) {
+            if (lead == 3) {
                 leadingRoom = rooms.get(0).getEastRoom();
-                if(leadingRoom.hasNorthExit()) {
+                if (leadingRoom.hasNorthExit()) {
                     leadingRoom.getNorthRoom().setSouthRoom(new DungeonRoom(1, 0, 0, 0, 100, false));
                     leadingRoom.setNorthRoom(random1);
                     isRandom = true;
-                } else if(leadingRoom.hasEastExit()) {
+                } else if (leadingRoom.hasEastExit()) {
                     leadingRoom.getEastRoom().setWestRoom(new DungeonRoom(0, 0, 1, 0, 100, false));
                     leadingRoom.setEastRoom(random1);
                     random1.setWestRoom(leadingRoom);
                     isRandom = true;
-                } else {
-                    nums.remove(lead);
                 }
             }
-            if (lead == 4){
+            if (lead == 4) {
                 leadingRoom = rooms.get(0).getWestRoom();
-                if(leadingRoom.hasWestExit()) {
+                if (leadingRoom.hasWestExit()) {
                     leadingRoom.getWestRoom().setEastRoom(new DungeonRoom(0, 0, 0, 1, 100, false));
                     leadingRoom.setWestRoom(random1);
                     isRandom = true;
-                } else if(leadingRoom.hasNorthExit()) {
+                } else if (leadingRoom.hasNorthExit()) {
                     leadingRoom.getNorthRoom().setSouthRoom(new DungeonRoom(1, 0, 0, 0, 100, false));
                     leadingRoom.setNorthRoom(random1);
                     isRandom = true;
-                } else {
-                    nums.remove(lead);
                 }
             }
         }
 
         //Fills all remaining exits with dead-end rooms
-        for(DungeonRoom r: rooms) {
-            if(!r.areExitsFilled()) {
+        for (DungeonRoom r : rooms) {
+            if (!r.areExitsFilled()) {
                 r.fillRooms();
             }
         }
 
         //Prints out dungeon map
         //For understanding dungeon layout
-//        for (int i = 0; i < rooms.size(); i++) {
-//            System.out.println("Room: " + rooms.get(i).getRoomNum());
-//            System.out.println(rooms.get(i).getRoomPath());
-//            if (rooms.get(i).hasNorthExit() && rooms.get(i).isNorthFilled()) {
-//                System.out.println("North room number: " + rooms.get(i).getNorthRoom().getRoomNum());
-//            }
-//            if (rooms.get(i).hasSouthExit() && rooms.get(i).isSouthFilled()) {
-//                System.out.println("South room number: " + rooms.get(i).getSouthRoom().getRoomNum());
-//            }
-//            if (rooms.get(i).hasEastExit() && rooms.get(i).isEastFilled()) {
-//                System.out.println("East room number: " + rooms.get(i).getEastRoom().getRoomNum());
-//            }
-//            if (rooms.get(i).hasWestExit() && rooms.get(i).isWestFilled()) {
-//                System.out.println("West room number: " + rooms.get(i).getWestRoom().getRoomNum());
-//            }
-//            System.out.println("Exits filled: " + rooms.get(i).areExitsFilled());
-//            System.out.println();
-//            System.out.println();
-//        }
+        for (int i = 0; i < rooms.size(); i++) {
+            System.out.println("Room: " + rooms.get(i).getRoomNum());
+            System.out.println(rooms.get(i).getRoomPath());
+            if (rooms.get(i).hasNorthExit() && rooms.get(i).isNorthFilled()) {
+                System.out.println("North room number: " + rooms.get(i).getNorthRoom().getRoomNum());
+            }
+            if (rooms.get(i).hasSouthExit() && rooms.get(i).isSouthFilled()) {
+                System.out.println("South room number: " + rooms.get(i).getSouthRoom().getRoomNum());
+            }
+            if (rooms.get(i).hasEastExit() && rooms.get(i).isEastFilled()) {
+                System.out.println("East room number: " + rooms.get(i).getEastRoom().getRoomNum());
+            }
+            if (rooms.get(i).hasWestExit() && rooms.get(i).isWestFilled()) {
+                System.out.println("West room number: " + rooms.get(i).getWestRoom().getRoomNum());
+            }
+            System.out.println("Exits filled: " + rooms.get(i).areExitsFilled());
+            System.out.println();
+            System.out.println();
+        }
 
         Settings.setCurrentRoom(rooms.get(0));
     }
 
     @FXML
-    public void enterDungeon(KeyEvent event) throws IOException{
+    public void enterDungeon(KeyEvent event) throws IOException {
 
         if (character.getLayoutY() <= -150) {
             Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
