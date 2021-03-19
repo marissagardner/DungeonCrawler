@@ -1,15 +1,11 @@
 package sample.Java;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
@@ -37,7 +33,8 @@ public class ExitRoomController {
     public void move(KeyEvent event) throws IOException {
         if (event.getCode().equals((KeyCode.UP))) {
 
-            if (character.getLayoutY() - 9 >= 0 && character.getLayoutX() >= 0 && character.getLayoutX() <= 672) {
+            if (character.getLayoutY() - 9 >= 0
+                    && character.getLayoutX() >= 0 && character.getLayoutX() <= 672) {
                 character.setLayoutY(character.getLayoutY() - 9);
             }
 
@@ -49,7 +46,8 @@ public class ExitRoomController {
                     //Settings.setCurrentRoom(Settings.getCurrentRoom().getNorthRoom());
                     acceptInput = false;
 
-                    Parent menuParent = FXMLLoader.load(getClass().getResource("../FXML/end_screen.fxml"));
+                    Parent menuParent = FXMLLoader.load(
+                            getClass().getResource("../FXML/end_screen.fxml"));
                     Scene menuScene = new Scene(menuParent, 960, 600);
 
                     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -65,7 +63,8 @@ public class ExitRoomController {
             }
         } else if (event.getCode().equals((KeyCode.DOWN))) {
 
-            if (character.getLayoutY() + 9 <= 198 && character.getLayoutX() >= 0 && character.getLayoutX() <= 672) {
+            if (character.getLayoutY() + 9 <= 198
+                    && character.getLayoutX() >= 0 && character.getLayoutX() <= 672) {
                 character.setLayoutY(character.getLayoutY() + 9);
             }
 
@@ -78,7 +77,8 @@ public class ExitRoomController {
                     Settings.setCurrentRoom(Settings.getCurrentRoom().getSouthRoom());
                     acceptInput = false;
 
-                    Parent menuParent = FXMLLoader.load(getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
+                    Parent menuParent = FXMLLoader.load(
+                            getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
                     Scene menuScene = new Scene(menuParent, 960, 600);
 
                     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -93,11 +93,13 @@ public class ExitRoomController {
                 }
             }
         } else if (event.getCode().equals((KeyCode.RIGHT))) {
-            if (character.getLayoutX() + 9 <= 672 && character.getLayoutY() >= 0 && character.getLayoutY() <= 198) {
+            if (character.getLayoutX() + 9 <= 672
+                    && character.getLayoutY() >= 0 && character.getLayoutY() <= 198) {
                 character.setLayoutX(character.getLayoutX() + 9);
             }
 
-            if (Settings.getCurrentRoom().hasNorthExit() || Settings.getCurrentRoom().hasSouthExit()) {
+            if (Settings.getCurrentRoom().hasNorthExit()
+                    || Settings.getCurrentRoom().hasSouthExit()) {
                 if (character.getLayoutY() > 198 && character.getLayoutX() + 9 <= 400) {
                     character.setLayoutX(character.getLayoutX() + 9);
                 }
@@ -108,11 +110,13 @@ public class ExitRoomController {
 
         } else if (event.getCode().equals((KeyCode.LEFT))) {
 
-            if (character.getLayoutX() - 9 >= 0 && character.getLayoutY() >= 0 && character.getLayoutY() <= 198) {
+            if (character.getLayoutX() - 9 >= 0
+                    && character.getLayoutY() >= 0 && character.getLayoutY() <= 198) {
                 character.setLayoutX(character.getLayoutX() - 9);
             }
 
-            if (Settings.getCurrentRoom().hasNorthExit() || Settings.getCurrentRoom().hasSouthExit()) {
+            if (Settings.getCurrentRoom().hasNorthExit()
+                    || Settings.getCurrentRoom().hasSouthExit()) {
                 if (character.getLayoutY() > 198 && character.getLayoutX() - 9 >= 280) {
                     character.setLayoutX(character.getLayoutX() - 9);
                 }
