@@ -158,5 +158,69 @@ public class MainTest2 extends ApplicationTest {
         sleep(1500);
         assertEquals(WestExitRoomNum, Settings.getCurrentRoom().getRoomNum());
     }
+
+    @Test
+    public void testRoom0NorthAndBackExit() {
+        assertEquals(GameState.START_SCREEN, Settings.getGameState());
+        clickOn("#startButton");
+        sleep(1500);
+        assertEquals(GameState.MENU_SCREEN, Settings.getGameState());
+        write("Avi");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        verifyThat("#money", NodeMatchers.isVisible());
+        for (int i = 0; i < 29; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        sleep(1500);
+        assertEquals(0, Settings.getCurrentRoom().getRoomNum());
+        for (int i = 0; i < 22; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        for (int i = 0; i < 26; i++) {
+            press(KeyCode.DOWN).release(KeyCode.DOWN);
+        }
+        sleep(1500);
+        assertEquals(0, Settings.getCurrentRoom().getRoomNum());
+    }
+
+    @Test
+    public void testRoom0EastAndBackExit() {
+        assertEquals(GameState.START_SCREEN, Settings.getGameState());
+        clickOn("#startButton");
+        sleep(1500);
+        assertEquals(GameState.MENU_SCREEN, Settings.getGameState());
+        write("Avi");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        verifyThat("#money", NodeMatchers.isVisible());
+        for (int i = 0; i < 29; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        sleep(1500);
+        assertEquals(0, Settings.getCurrentRoom().getRoomNum());
+        for (int i = 0; i < 37; i++) {
+            press(KeyCode.RIGHT).release(KeyCode.RIGHT);
+        }
+        for (int i = 0; i < 8; i++) {
+            press(KeyCode.DOWN).release(KeyCode.DOWN);
+        }
+        for (int i = 0; i < 15; i++) {
+            press(KeyCode.RIGHT).release(KeyCode.RIGHT);
+        }
+        for (int i = 0; i < 37; i++) {
+            press(KeyCode.LEFT).release(KeyCode.LEFT);
+        }
+        for (int i = 0; i < 8; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        for (int i = 0; i < 15; i++) {
+            press(KeyCode.LEFT).release(KeyCode.LEFT);
+        }
+        sleep(1500);
+        assertEquals(0, Settings.getCurrentRoom().getRoomNum());
+    }
 }
 
