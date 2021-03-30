@@ -5,6 +5,15 @@ public class Settings {
     private static int money;
     private static GameState gameState;
     private static DungeonRoom currentRoom;
+    private static Player player;
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        Settings.player = player;
+    }
 
     public static DungeonRoom getCurrentRoom() {
         return currentRoom;

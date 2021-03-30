@@ -95,6 +95,17 @@ public class MenuScreenController {
                 Settings.setMoney(50);
             }
 
+            Player player = new Player(new Weapon("Sword"));
+            Settings.setPlayer(player);
+
+            if (sword.isSelected()) {
+                Settings.getPlayer().setWeapon(new Weapon("Sword"));
+            } else if (medium.isSelected()) {
+                Settings.getPlayer().setWeapon(new Weapon("Bow"));
+            } else if (hard.isSelected()) {
+                Settings.getPlayer().setWeapon(new Weapon("Axe"));
+            }
+
             Settings.setGameState(GameState.DUNGEON);
             Parent menuParent = FXMLLoader.load(getClass().getResource("../FXML/game_screen.fxml"));
             Scene menuScene = new Scene(menuParent, 960, 600);

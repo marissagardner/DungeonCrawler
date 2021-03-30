@@ -187,6 +187,12 @@
                     <Image url="@../../img/Player.png"/>
                 </image>
             </ImageView>
+            <ImageView fx:id="monster" fitHeight="150.0" fitWidth="200.0"
+                       pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../img/rayquaza.png"/>
+                </image>
+            </ImageView>
         </Pane>
     </center>
 </BorderPane>

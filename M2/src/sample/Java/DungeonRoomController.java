@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
@@ -28,11 +29,37 @@ public class DungeonRoomController {
     private ImageView character;
 
     @FXML
+    private ImageView monster;
+
+    @FXML
     public void initialize() {
         String playerMoney = "Money: " + Settings.getMoney();
         String roomNum = "Room: " + Settings.getCurrentRoom().getRoomNum();
         money.setText(playerMoney);
         roomNumber.setText(roomNum);
+
+        if (Settings.getCurrentRoom().getRoomNum() == 0) {
+            monster.setVisible(false);
+        }
+
+        if (Settings.getCurrentRoom().getRoomNum() != 0) {
+            monster.setImage(new Image(Settings.getCurrentRoom().getMonster().getSpritePath()));
+            monster.setLayoutX(300);
+            monster.setLayoutY(80);
+            if (Settings.getPlayer().getLastExit() == Exit.NORTH) {
+                character.setLayoutX(336);
+                character.setLayoutY(-130);
+            } else if (Settings.getPlayer().getLastExit() == Exit.SOUTH) {
+                character.setLayoutX(336);
+                character.setLayoutY(300);
+            } else if (Settings.getPlayer().getLastExit() == Exit.EAST) {
+                character.setLayoutX(760);
+                character.setLayoutY(174);
+            } else {
+                character.setLayoutX(-98);
+                character.setLayoutY(24);
+            }
+        }
     }
 
     //Unused right now, onKeyReleased could call this method for walk functionality
@@ -53,6 +80,7 @@ public class DungeonRoomController {
                 }
                 if (character.getLayoutY() <= -150) {
                     Settings.setCurrentRoom(Settings.getCurrentRoom().getNorthRoom());
+                    Settings.getPlayer().setLastExit(Exit.SOUTH);
                     acceptInput = false;
                     Parent menuParent = FXMLLoader.load(
                             getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
@@ -88,6 +116,7 @@ public class DungeonRoomController {
                 }
                 if (character.getLayoutY() >= 380) {
                     Settings.setCurrentRoom(Settings.getCurrentRoom().getSouthRoom());
+                    Settings.getPlayer().setLastExit(Exit.NORTH);
                     acceptInput = false;
                     Parent menuParent = FXMLLoader.load(
                             getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
@@ -123,6 +152,7 @@ public class DungeonRoomController {
                 }
                 if (character.getLayoutX() >= 800) {
                     Settings.setCurrentRoom(Settings.getCurrentRoom().getEastRoom());
+                    Settings.getPlayer().setLastExit(Exit.WEST);
                     acceptInput = false;
                     Parent menuParent = FXMLLoader.load(
                             getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
@@ -155,6 +185,7 @@ public class DungeonRoomController {
                 }
                 if (character.getLayoutX() <= -128) {
                     Settings.setCurrentRoom(Settings.getCurrentRoom().getWestRoom());
+                    Settings.getPlayer().setLastExit(Exit.EAST);
                     acceptInput = false;
                     Parent menuParent = FXMLLoader.load(
                             getClass().getResource(Settings.getCurrentRoom().getRoomPath()));

@@ -127,7 +127,7 @@ public class GameScreenController {
 
         //array list of rooms, starts with main room
         ArrayList<DungeonRoom> rooms = new ArrayList<>();
-        rooms.add(new DungeonRoom(1, 1, 1, 1, 0, false));
+        rooms.add(new DungeonRoom(1, 1, 1, 1, 0, false, true));
 
         //generates 20 more rooms, can change this number
         for (int i = 0; i < 20; i++) {
@@ -147,7 +147,7 @@ public class GameScreenController {
                 counter++;
             }
 
-            rooms.add(new DungeonRoom(bin[3], bin[2], bin[1], bin[0], i + 1, false));
+            rooms.add(new DungeonRoom(bin[3], bin[2], bin[1], bin[0], i + 1, false, false));
         }
 
         //sorts rooms into lists if they have those exits - room can be part of multiple lists
@@ -288,29 +288,29 @@ public class GameScreenController {
 
         int selector = (int) (Math.random() * randoms.size());
         DungeonRoom random1 = new DungeonRoom(
-                1, 1, 1, 1, randoms.get(selector), false);
+                1, 1, 1, 1, randoms.get(selector), false, false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
         DungeonRoom random2 = new DungeonRoom(
-                0, 1, 1, 0, randoms.get(selector), false);
+                0, 1, 1, 0, randoms.get(selector), false, false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
         DungeonRoom random3 = new DungeonRoom(
-                1, 0, 1, 1, randoms.get(selector), false);
+                1, 0, 1, 1, randoms.get(selector), false, false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
         DungeonRoom random4 = new DungeonRoom(
-                0, 1, 0, 1, randoms.get(selector), false);
+                0, 1, 0, 1, randoms.get(selector), false, false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
         DungeonRoom random5 = new DungeonRoom(
-                1, 1, 0, 1, randoms.get(selector), false);
+                1, 1, 0, 1, randoms.get(selector), false, false);
         randoms.remove(selector);
         selector = (int) (Math.random() * randoms.size());
         DungeonRoom random6 = new DungeonRoom(
-                1, 0, 1, 1, randoms.get(selector), false);
+                1, 0, 1, 1, randoms.get(selector), false, false);
         DungeonRoom exit = new DungeonRoom(
-                1, 1, 0, 0, 100, true);
+                1, 1, 0, 0, 100, true, true);
 
         rooms.add(random1);
         rooms.add(random2);
@@ -337,24 +337,24 @@ public class GameScreenController {
         boolean isRandom = false;
 
         while (!isRandom) {
-            int lead = (int) (Math.random() * 4);
+            int lead = 1 + (int) (Math.random() * 4);
             if (lead == 1) {
                 leadingRoom = rooms.get(0).getNorthRoom();
                 if (leadingRoom.hasWestExit()) {
                     leadingRoom.getWestRoom().setEastRoom(
-                            new DungeonRoom(0, 0, 0, 1, 100, false));
+                            new DungeonRoom(0, 0, 0, 1, 100, false, false));
                     leadingRoom.setWestRoom(random1);
                     random1.setEastRoom(leadingRoom);
                     isRandom = true;
                 } else if (leadingRoom.hasNorthExit()) {
                     leadingRoom.getNorthRoom().setSouthRoom(
-                            new DungeonRoom(1, 0, 0, 0, 100, false));
+                            new DungeonRoom(1, 0, 0, 0, 100, false, false));
                     leadingRoom.setNorthRoom(random1);
                     random1.setSouthRoom(leadingRoom);
                     isRandom = true;
                 } else if (leadingRoom.hasEastExit()) {
                     leadingRoom.getEastRoom().setWestRoom(
-                            new DungeonRoom(0, 0, 1, 0, 100, false));
+                            new DungeonRoom(0, 0, 1, 0, 100, false, false));
                     leadingRoom.setEastRoom(random1);
                     random1.setWestRoom(leadingRoom);
                     isRandom = true;
@@ -364,13 +364,13 @@ public class GameScreenController {
                 leadingRoom = rooms.get(0).getSouthRoom();
                 if (leadingRoom.hasWestExit()) {
                     leadingRoom.getWestRoom().setEastRoom(
-                            new DungeonRoom(0, 0, 0, 1, 100, false));
+                            new DungeonRoom(0, 0, 0, 1, 100, false, false));
                     leadingRoom.setWestRoom(random1);
                     random1.setEastRoom(leadingRoom);
                     isRandom = true;
                 } else if (leadingRoom.hasEastExit()) {
                     leadingRoom.getEastRoom().setWestRoom(
-                            new DungeonRoom(0, 0, 1, 0, 100, false));
+                            new DungeonRoom(0, 0, 1, 0, 100, false, false));
                     leadingRoom.setEastRoom(random1);
                     random1.setWestRoom(leadingRoom);
                     isRandom = true;
@@ -380,12 +380,12 @@ public class GameScreenController {
                 leadingRoom = rooms.get(0).getEastRoom();
                 if (leadingRoom.hasNorthExit()) {
                     leadingRoom.getNorthRoom().setSouthRoom(
-                            new DungeonRoom(1, 0, 0, 0, 100, false));
+                            new DungeonRoom(1, 0, 0, 0, 100, false, false));
                     leadingRoom.setNorthRoom(random1);
                     isRandom = true;
                 } else if (leadingRoom.hasEastExit()) {
                     leadingRoom.getEastRoom().setWestRoom(
-                            new DungeonRoom(0, 0, 1, 0, 100, false));
+                            new DungeonRoom(0, 0, 1, 0, 100, false, false));
                     leadingRoom.setEastRoom(random1);
                     random1.setWestRoom(leadingRoom);
                     isRandom = true;
@@ -395,12 +395,12 @@ public class GameScreenController {
                 leadingRoom = rooms.get(0).getWestRoom();
                 if (leadingRoom.hasWestExit()) {
                     leadingRoom.getWestRoom().setEastRoom(
-                            new DungeonRoom(0, 0, 0, 1, 100, false));
+                            new DungeonRoom(0, 0, 0, 1, 100, false, false));
                     leadingRoom.setWestRoom(random1);
                     isRandom = true;
                 } else if (leadingRoom.hasNorthExit()) {
                     leadingRoom.getNorthRoom().setSouthRoom(
-                            new DungeonRoom(1, 0, 0, 0, 100, false));
+                            new DungeonRoom(1, 0, 0, 0, 100, false, false));
                     leadingRoom.setNorthRoom(random1);
                     isRandom = true;
                 }
