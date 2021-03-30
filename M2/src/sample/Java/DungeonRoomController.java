@@ -178,6 +178,8 @@ public class DungeonRoomController {
         money.setText(playerMoney);
         roomNumber.setText(roomNum);
 
+        monster.setVisible(false);
+
         if (Settings.getCurrentRoom().getRoomNum() == 0) {
             monster.setVisible(false);
         }
@@ -187,6 +189,7 @@ public class DungeonRoomController {
                 monster.setImage(new Image(Settings.getCurrentRoom().getMonster().getSpritePath()));
                 monster.setLayoutX(300);
                 monster.setLayoutY(80);
+                monster.setVisible(true);
             }
             if (Settings.getPlayer().getLastExit() == Exit.NORTH) {
                 man.setLayoutX(336);
@@ -447,7 +450,7 @@ public class DungeonRoomController {
             if(man.getLayoutX() >= 230 && man.getLayoutX() <= 430
                     && man.getLayoutY() >= -30 && man.getLayoutY() <= 220) {
                 Parent menuParent = FXMLLoader.load(
-                        getClass().getResource("../FXML/game_over.fxml"));
+                        getClass().getResource("../FXML/battle_screen.fxml"));
                 Scene menuScene = new Scene(menuParent, 960, 600);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(menuScene);

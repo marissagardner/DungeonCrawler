@@ -73,6 +73,12 @@
     -fx-fill: white;
 }
 
+.health {
+    -fx-font-family: 'Press Start 2P';
+    -fx-font-size: 12;
+    -fx-fill: white;
+}
+
 .money {
     -fx-font-family: 'Press Start 2P';
     -fx-font-size: 10;
