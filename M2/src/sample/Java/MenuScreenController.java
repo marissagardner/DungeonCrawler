@@ -100,9 +100,9 @@ public class MenuScreenController {
 
             if (sword.isSelected()) {
                 Settings.getPlayer().setWeapon(new Weapon("Sword"));
-            } else if (medium.isSelected()) {
+            } else if (bow.isSelected()) {
                 Settings.getPlayer().setWeapon(new Weapon("Bow"));
-            } else if (hard.isSelected()) {
+            } else if (axe.isSelected()) {
                 Settings.getPlayer().setWeapon(new Weapon("Axe"));
             }
 

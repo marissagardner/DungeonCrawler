@@ -119,10 +119,53 @@ public class GameScreenController {
     @FXML
     private Group man;
 
+    ImageView player;
+    ImageView player1;
+    ImageView player2;
+    ImageView player3;
+    ImageView player4;
+    ImageView playerL;
+    ImageView playerL1;
+    ImageView playerL2;
+    ImageView playerL3;
+    ImageView playerL4;
     @FXML
     public void initialize() {
-
-        man.getChildren().setAll(character);
+        if (Settings.getPlayer().getWeapon().getName().equals("Sword")) {
+            player = character;
+            player1 = character1;
+            player2 = character2;
+            player3 = character3;
+            player4 = character4;
+            playerL = characterL;
+            playerL1 = characterL1;
+            playerL2 = characterL2;
+            playerL3 = characterL3;
+            playerL4 = characterL4;
+        } else if (Settings.getPlayer().getWeapon().getName().equals("Bow")) {
+            player = characterbow;
+            player1 = characterbow1;
+            player2 = characterbow2;
+            player3 = characterbow3;
+            player4 = characterbow4;
+            playerL = characterbowL;
+            playerL1 = characterbowL1;
+            playerL2 = characterbowL2;
+            playerL3 = characterbowL3;
+            playerL4 = characterbowL4;
+        } else {
+            player = characteraxe;
+            player1 = characteraxe1;
+            player2 = characteraxe2;
+            player3 = characteraxe3;
+            player4 = characteraxe4;
+            playerL = characteraxeL;
+            playerL1 = characteraxeL1;
+            playerL2 = characteraxeL2;
+            playerL3 = characteraxeL3;
+            playerL4 = characteraxeL4;
+        }
+        man.getChildren().setAll(player);
         money.setText("Money: " + Settings.getMoney());
 
         //array list of rooms, starts with main room
@@ -418,31 +461,31 @@ public class GameScreenController {
         t.getKeyFrames().add(new KeyFrame(
                 Duration.millis(100),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(character1);
+                    man.getChildren().setAll(player1);
                 }
         ));
         t.getKeyFrames().add(new KeyFrame(
                 Duration.millis(200),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(character2);
+                    man.getChildren().setAll(player2);
                 }
         ));
         t.getKeyFrames().add(new KeyFrame(
                 Duration.millis(300),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(character3);
+                    man.getChildren().setAll(player3);
                 }
         ));
         t.getKeyFrames().add(new KeyFrame(
                 Duration.millis(400),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(character4);
+                    man.getChildren().setAll(player4);
                 }
         ));
         t.getKeyFrames().add(new KeyFrame(
                 Duration.millis(500),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(character);
+                    man.getChildren().setAll(player);
                 }
         ));
 
@@ -450,31 +493,31 @@ public class GameScreenController {
         tL.getKeyFrames().add(new KeyFrame(
                 Duration.millis(100),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(characterL1);
+                    man.getChildren().setAll(playerL1);
                 }
         ));
         tL.getKeyFrames().add(new KeyFrame(
                 Duration.millis(200),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(characterL2);
+                    man.getChildren().setAll(playerL2);
                 }
         ));
         tL.getKeyFrames().add(new KeyFrame(
                 Duration.millis(300),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(characterL3);
+                    man.getChildren().setAll(playerL3);
                 }
         ));
         tL.getKeyFrames().add(new KeyFrame(
                 Duration.millis(400),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(characterL4);
+                    man.getChildren().setAll(playerL4);
                 }
         ));
         tL.getKeyFrames().add(new KeyFrame(
                 Duration.millis(500),
                 (ActionEvent e) -> {
-                    man.getChildren().setAll(characterL);
+                    man.getChildren().setAll(playerL);
                 }
         ));
 
@@ -494,13 +537,12 @@ public class GameScreenController {
             menuScene.getRoot().requestFocus();
         }
         if (event.getEventType() == KeyEvent.KEY_RELEASED) {
-            System.out.println("asdfads");
             t.stop();
             tL.stop();
             if (right) {
-                man.getChildren().setAll(character);
+                man.getChildren().setAll(player);
             } else if (left) {
-                man.getChildren().setAll(characterL);
+                man.getChildren().setAll(playerL);
             }
         } else if (event.getCode().equals(KeyCode.UP)) {
             if (right) {

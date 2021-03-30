@@ -5,6 +5,7 @@ public class Weapon {
     private int damage;
 
     public Weapon(String name) {
+        this.name = name;
         if (name.equals("Sword")) {
             damage = 20;
         } else if (name.equals("Bow")) {
