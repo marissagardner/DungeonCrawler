@@ -206,7 +206,7 @@ public class DungeonRoomController {
     Timeline tL = new Timeline();
     boolean right = false;
     boolean left = false;
-    //Unused right now, onKeyReleased could call this method for walk functionality
+
     @FXML
     public void reset(KeyEvent event) throws IOException {
         t.stop();
