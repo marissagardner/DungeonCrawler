@@ -183,15 +183,17 @@ public class DungeonRoomController {
         }
 
         if (Settings.getCurrentRoom().getRoomNum() != 0) {
-            monster.setImage(new Image(Settings.getCurrentRoom().getMonster().getSpritePath()));
-            monster.setLayoutX(300);
-            monster.setLayoutY(80);
+            if(!Settings.getCurrentRoom().isDefeated()) {
+                monster.setImage(new Image(Settings.getCurrentRoom().getMonster().getSpritePath()));
+                monster.setLayoutX(300);
+                monster.setLayoutY(80);
+            }
             if (Settings.getPlayer().getLastExit() == Exit.NORTH) {
                 man.setLayoutX(336);
                 man.setLayoutY(-130);
             } else if (Settings.getPlayer().getLastExit() == Exit.SOUTH) {
                 man.setLayoutX(336);
-                man.setLayoutY(300);
+                man.setLayoutY(318);
             } else if (Settings.getPlayer().getLastExit() == Exit.EAST) {
                 man.setLayoutX(760);
                 man.setLayoutY(174);
@@ -433,10 +435,28 @@ public class DungeonRoomController {
             }
             if (Settings.getCurrentRoom().hasNorthExit()
                     || Settings.getCurrentRoom().hasSouthExit()) {
-                if ((man.getLayoutY() < 0
-                        || man.getLayoutY() > 198) && man.getLayoutX() - 9 >= 280) {
-                    man.setLayoutX(character.getLayoutX() - 9);
-                }
+//                if ((man.getLayoutY() < 0
+//                        || man.getLayoutY() > 198) && man.getLayoutX() - 9 >= 280) {
+//                    man.setLayoutX(character.getLayoutX() - 9);
+//                }
+                //temporary fix
+            }
+        }
+
+        if(!Settings.getCurrentRoom().isDefeated()) {
+            if(man.getLayoutX() >= 230 && man.getLayoutX() <= 430
+                    && man.getLayoutY() >= -30 && man.getLayoutY() <= 220) {
+                Parent menuParent = FXMLLoader.load(
+                        getClass().getResource("../FXML/game_over.fxml"));
+                Scene menuScene = new Scene(menuParent, 960, 600);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(menuScene);
+                window.setMinHeight(600);
+                window.setMinWidth(960);
+                window.setMaxHeight(600);
+                window.setMaxWidth(960);
+                window.show();
+                menuScene.getRoot().requestFocus();
             }
         }
     }
