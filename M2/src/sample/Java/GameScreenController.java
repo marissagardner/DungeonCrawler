@@ -1,6 +1,11 @@
 package sample.Java;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,6 +15,8 @@ import javafx.scene.text.Text;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +30,99 @@ public class GameScreenController {
     private ImageView character;
 
     @FXML
+    private ImageView characterL;
+
+    @FXML
+    private ImageView character1;
+
+    @FXML
+    private ImageView character2;
+
+    @FXML
+    private ImageView character3;
+
+    @FXML
+    private ImageView character4;
+
+    @FXML
+    private ImageView characterL1;
+
+    @FXML
+    private ImageView characterL2;
+
+    @FXML
+    private ImageView characterL3;
+
+    @FXML
+    private ImageView characterL4;
+
+    @FXML
+    private ImageView characteraxe;
+
+    @FXML
+    private ImageView characteraxeL;
+
+    @FXML
+    private ImageView characteraxe1;
+
+    @FXML
+    private ImageView characteraxe2;
+
+    @FXML
+    private ImageView characteraxe3;
+
+    @FXML
+    private ImageView characteraxe4;
+
+    @FXML
+    private ImageView characteraxeL1;
+
+    @FXML
+    private ImageView characteraxeL2;
+
+    @FXML
+    private ImageView characteraxeL3;
+
+    @FXML
+    private ImageView characteraxeL4;
+
+    @FXML
+    private ImageView characterbow;
+
+    @FXML
+    private ImageView characterbowL;
+
+    @FXML
+    private ImageView characterbow1;
+
+    @FXML
+    private ImageView characterbow2;
+
+    @FXML
+    private ImageView characterbow3;
+
+    @FXML
+    private ImageView characterbow4;
+
+    @FXML
+    private ImageView characterbowL1;
+
+    @FXML
+    private ImageView characterbowL2;
+
+    @FXML
+    private ImageView characterbowL3;
+
+    @FXML
+    private ImageView characterbowL4;
+
+    @FXML
+    private Group man;
+
+    @FXML
     public void initialize() {
+
+        man.getChildren().setAll(character);
         money.setText("Money: " + Settings.getMoney());
 
         //array list of rooms, starts with main room
@@ -309,10 +408,77 @@ public class GameScreenController {
         }
     }
 
+    Timeline t = new Timeline();
+    Timeline tL = new Timeline();
+    boolean right = false;
+    boolean left = false;
     @FXML
     public void enterDungeon(KeyEvent event) throws IOException {
+        t.setCycleCount(Timeline.INDEFINITE);
+        t.getKeyFrames().add(new KeyFrame(
+                Duration.millis(100),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(character1);
+                }
+        ));
+        t.getKeyFrames().add(new KeyFrame(
+                Duration.millis(200),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(character2);
+                }
+        ));
+        t.getKeyFrames().add(new KeyFrame(
+                Duration.millis(300),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(character3);
+                }
+        ));
+        t.getKeyFrames().add(new KeyFrame(
+                Duration.millis(400),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(character4);
+                }
+        ));
+        t.getKeyFrames().add(new KeyFrame(
+                Duration.millis(500),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(character);
+                }
+        ));
 
-        if (character.getLayoutY() <= -150) {
+        tL.setCycleCount(Timeline.INDEFINITE);
+        tL.getKeyFrames().add(new KeyFrame(
+                Duration.millis(100),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(characterL1);
+                }
+        ));
+        tL.getKeyFrames().add(new KeyFrame(
+                Duration.millis(200),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(characterL2);
+                }
+        ));
+        tL.getKeyFrames().add(new KeyFrame(
+                Duration.millis(300),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(characterL3);
+                }
+        ));
+        tL.getKeyFrames().add(new KeyFrame(
+                Duration.millis(400),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(characterL4);
+                }
+        ));
+        tL.getKeyFrames().add(new KeyFrame(
+                Duration.millis(500),
+                (ActionEvent e) -> {
+                    man.getChildren().setAll(characterL);
+                }
+        ));
+
+        if (man.getLayoutY() <= -150) {
             Parent menuParent = FXMLLoader.load(
                     getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
             Scene menuScene = new Scene(menuParent, 960, 600);
@@ -327,26 +493,51 @@ public class GameScreenController {
 
             menuScene.getRoot().requestFocus();
         }
-        if (event.getCode().equals(KeyCode.UP)) {
-            if (character.getLayoutY() - 9 >= 0
-                    || (character.getLayoutX() >= 280 && character.getLayoutX() <= 400)) {
-                character.setLayoutY(character.getLayoutY() - 9);
+        if (event.getEventType() == KeyEvent.KEY_RELEASED) {
+            System.out.println("asdfads");
+            t.stop();
+            tL.stop();
+            if (right) {
+                man.getChildren().setAll(character);
+            } else if (left) {
+                man.getChildren().setAll(characterL);
+            }
+        } else if (event.getCode().equals(KeyCode.UP)) {
+            if (right) {
+                t.play();
+            } else if (left) {
+                tL.play();
+            }
+            if (man.getLayoutY() - 9 >= 0
+                    || (man.getLayoutX() >= 280 && man.getLayoutX() <= 400)) {
+                man.setLayoutY(man.getLayoutY() - 9);
             }
         } else if (event.getCode().equals(KeyCode.DOWN)) {
-            if (character.getLayoutY() + 9 <= 198) {
-                character.setLayoutY(character.getLayoutY() + 9);
+            if (right) {
+                t.play();
+            } else if (left) {
+                tL.play();
+            }
+            if (man.getLayoutY() + 9 <= 198) {
+                man.setLayoutY(man.getLayoutY() + 9);
             }
         } else if (event.getCode().equals(KeyCode.LEFT)) {
-            if (character.getLayoutX() - 9 >= 0 && character.getLayoutY() >= 0) {
-                character.setLayoutX(character.getLayoutX() - 9);
-            } else if (character.getLayoutX() - 9 >= 280) {
-                character.setLayoutX(character.getLayoutX() - 9);
+            tL.play();
+            left = true;
+            right = false;
+            if (man.getLayoutX() - 9 >= 0 && man.getLayoutY() >= 0) {
+                man.setLayoutX(man.getLayoutX() - 9);
+            } else if (man.getLayoutX() - 9 >= 280) {
+                man.setLayoutX(man.getLayoutX() - 9);
             }
         } else if (event.getCode().equals(KeyCode.RIGHT)) {
-            if (character.getLayoutX() + 9 <= 672 && character.getLayoutY() >= 0) {
-                character.setLayoutX(character.getLayoutX() + 9);
-            } else if (character.getLayoutX() + 9 <= 400) {
-                character.setLayoutX(character.getLayoutX() + 9);
+            t.play();
+            right = true;
+            left = false;
+            if (man.getLayoutX() + 9 <= 672 && man.getLayoutY() >= 0) {
+                man.setLayoutX(man.getLayoutX() + 9);
+            } else if (man.getLayoutX() + 9 <= 400) {
+                man.setLayoutX(man.getLayoutX() + 9);
             }
         }
     }
