@@ -83,3 +83,8 @@
     -fx-background-image: url("../img/exit.jpg");
     -fx-background-size: 100% 100%;
 }
+
+.gameOverbg {
+    -fx-background-image: url("../img/game_over.jpg");
+    -fx-background-size: 100% 100%;
+}
