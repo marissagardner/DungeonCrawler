@@ -20,11 +20,15 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class GameScreenController {
 
     @FXML
     private Text money;
+
+    @FXML
+    private Text health;
 
     @FXML
     private ImageView character;
@@ -167,6 +171,7 @@ public class GameScreenController {
         }
         man.getChildren().setAll(player);
         money.setText("Money: " + Settings.getMoney());
+        health.setText("Health: " + Settings.getPlayer().getHealth());
 
         //array list of rooms, starts with main room
         ArrayList<DungeonRoom> rooms = new ArrayList<>();

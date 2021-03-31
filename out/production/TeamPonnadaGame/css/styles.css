@@ -79,6 +79,12 @@
     -fx-fill: white;
 }
 
+.commentary {
+    -fx-font-family: 'Press Start 2P';
+    -fx-font-size: 10;
+    -fx-fill: white;
+}
+
 .money {
     -fx-font-family: 'Press Start 2P';
     -fx-font-size: 10;

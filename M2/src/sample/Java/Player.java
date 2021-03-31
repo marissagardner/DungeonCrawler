@@ -5,16 +5,20 @@ public class Player {
     private Exit lastExit;
     private int health;
 
+    public Player(Weapon weapon) {
+        this.weapon = weapon;
+        this.health = 100;
+    }
+
     public int getHealth() {
         return health;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public Player(Weapon weapon) {
-        this.weapon = weapon;
+    public void dealDamage(int damage) {
+        this.health -= damage;
+        if(this.health < 0) {
+            this.health = 0;
+        }
     }
 
     public Exit getLastExit() {
