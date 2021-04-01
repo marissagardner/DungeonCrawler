@@ -62,4 +62,77 @@ public class MainTestM4 extends ApplicationTest {
         verifyThat("#gameCommentary", NodeMatchers.isVisible());
         sleep(1500);
     }
+
+    @Test
+    public void testDealDamageToMonster() {
+        assertEquals(GameState.START_SCREEN, Settings.getGameState());
+        clickOn("#startButton");
+        sleep(1500);
+        assertEquals(GameState.MENU_SCREEN, Settings.getGameState());
+        write("Avi");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        verifyThat("#money", NodeMatchers.isVisible());
+        for (int i = 0; i < 28; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        sleep(1500);
+        assertEquals(0, Settings.getCurrentRoom().getRoomNum());
+        int northExitRoomNum = Settings.getCurrentRoom().getNorthRoom().getRoomNum();
+        for (int i = 0; i < 22; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        sleep(1500);
+        assertEquals(northExitRoomNum, Settings.getCurrentRoom().getRoomNum());
+        for (int i = 0; i < 13; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        verifyThat("#playerHealth", NodeMatchers.isVisible());
+        verifyThat("#monsterHealth", NodeMatchers.isVisible());
+        verifyThat("#gameCommentary", NodeMatchers.isVisible());
+        sleep(1500);
+        int monsterStartHealth = Settings.getCurrentRoom().getMonster().getHealth();
+        press(KeyCode.SPACE).release(KeyCode.SPACE);
+        sleep(1500);
+        assertTrue(Settings.getCurrentRoom().getMonster().getHealth() < monsterStartHealth);
+        sleep(1500);
+    }
+
+    @Test
+    public void testDealDamageToPlayer() {
+        assertEquals(GameState.START_SCREEN, Settings.getGameState());
+        clickOn("#startButton");
+        sleep(1500);
+        assertEquals(GameState.MENU_SCREEN, Settings.getGameState());
+        write("Avi");
+        sleep(1500);
+        clickOn("#startGame");
+        sleep(1500);
+        verifyThat("#money", NodeMatchers.isVisible());
+        for (int i = 0; i < 28; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        sleep(1500);
+        assertEquals(0, Settings.getCurrentRoom().getRoomNum());
+        int northExitRoomNum = Settings.getCurrentRoom().getNorthRoom().getRoomNum();
+        for (int i = 0; i < 22; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        sleep(1500);
+        assertEquals(northExitRoomNum, Settings.getCurrentRoom().getRoomNum());
+        for (int i = 0; i < 13; i++) {
+            press(KeyCode.UP).release(KeyCode.UP);
+        }
+        verifyThat("#playerHealth", NodeMatchers.isVisible());
+        verifyThat("#monsterHealth", NodeMatchers.isVisible());
+        verifyThat("#gameCommentary", NodeMatchers.isVisible());
+        sleep(1500);
+        int playerStartHealth = Settings.getPlayer().getHealth();
+        press(KeyCode.SPACE).release(KeyCode.SPACE);
+        sleep(1500);
+        assertTrue(Settings.getCurrentRoom().getMonster().getHealth() < playerStartHealth);
+        sleep(1500);
+    }
+
 }
