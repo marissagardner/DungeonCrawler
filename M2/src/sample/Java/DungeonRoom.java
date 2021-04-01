@@ -31,7 +31,8 @@ public class DungeonRoom {
     private DungeonRoom eastRoom;
     private DungeonRoom westRoom;
 
-    public DungeonRoom(int north, int south, int east, int west, int num, boolean isEnd, boolean isDefeated) {
+    public DungeonRoom(int north, int south, int east, int west,
+                       int num, boolean isEnd, boolean isDefeated) {
         this.numExits = north + south + east + west;
         this.roomPath = "../FXML/dungeon_room_" + north + south + east + west + ".fxml";
         this.roomNum = num;

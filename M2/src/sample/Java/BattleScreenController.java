@@ -1,9 +1,6 @@
 package sample.Java;
 
-import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -19,7 +16,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class BattleScreenController {
     @FXML
@@ -46,15 +42,15 @@ public class BattleScreenController {
     @FXML
     private Text gameCommentary;
 
-    ImageView player;
+    private ImageView player;
 
-    int playerDamage;
-    int monsterDamage;
-    String mHealth;
-    String pHealth;
-    String commentary;
-    boolean battleOver;
-    boolean playerTurn;
+    private int playerDamage;
+    private int monsterDamage;
+    private String mHealth;
+    private String pHealth;
+    private String commentary;
+    private boolean battleOver;
+    private boolean playerTurn;
 
     @FXML
     public void initialize() {
@@ -84,8 +80,8 @@ public class BattleScreenController {
 
     @FXML
     public void move(KeyEvent event) throws IOException, InterruptedException {
-        if(event.getCode().equals(KeyCode.SPACE)) {
-            if(playerTurn) {
+        if (event.getCode().equals(KeyCode.SPACE)) {
+            if (playerTurn) {
                 playerDamage = Settings.getPlayer().getWeapon().getDamage();
                 Settings.getCurrentRoom().getMonster().dealDamage(playerDamage);
                 mHealth = "Health: " + Settings.getCurrentRoom().getMonster().getHealth();
@@ -107,7 +103,7 @@ public class BattleScreenController {
     }
 
     public void monsterTurn(KeyEvent event) {
-        if(Settings.getCurrentRoom().getMonster().getHealth() == 0) {
+        if (Settings.getCurrentRoom().getMonster().getHealth() == 0) {
             commentary = "You defeated "
                     + Settings.getCurrentRoom().getMonster().getName() + ".";
             gameCommentary.setText(commentary);
@@ -124,7 +120,7 @@ public class BattleScreenController {
             pause.play();
         }
 
-        if(!battleOver) {
+        if (!battleOver) {
             monsterDamage = Settings.getCurrentRoom().getMonster().getDamage();
             Settings.getPlayer().dealDamage(monsterDamage);
             pHealth = "Health: " + Settings.getPlayer().getHealth();
@@ -143,8 +139,9 @@ public class BattleScreenController {
     }
 
     public void gameOver(KeyEvent event) {
-        if(Settings.getPlayer().getHealth() == 0) {
-            commentary = "You lost against " + Settings.getCurrentRoom().getMonster().getName() + ".";
+        if (Settings.getPlayer().getHealth() == 0) {
+            commentary = "You lost against "
+                    + Settings.getCurrentRoom().getMonster().getName() + ".";
             gameCommentary.setText(commentary);
 
             PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -177,6 +174,7 @@ public class BattleScreenController {
 
     public void backToDungeon(KeyEvent event) throws IOException {
         Settings.getCurrentRoom().setDefeated(true);
+        Settings.setGameState(GameState.DUNGEON);
         Parent menuParent = FXMLLoader.load(
                 getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
         Scene menuScene = new Scene(menuParent, 960, 600);

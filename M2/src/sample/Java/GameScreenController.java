@@ -3,7 +3,6 @@ package sample.Java;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -20,7 +19,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Set;
 
 public class GameScreenController {
 
@@ -123,16 +121,17 @@ public class GameScreenController {
     @FXML
     private Group man;
 
-    ImageView player;
-    ImageView player1;
-    ImageView player2;
-    ImageView player3;
-    ImageView player4;
-    ImageView playerL;
-    ImageView playerL1;
-    ImageView playerL2;
-    ImageView playerL3;
-    ImageView playerL4;
+    private ImageView player;
+    private ImageView player1;
+    private ImageView player2;
+    private ImageView player3;
+    private ImageView player4;
+    private ImageView playerL;
+    private ImageView playerL1;
+    private ImageView playerL2;
+    private ImageView playerL3;
+    private ImageView playerL4;
+
     @FXML
     public void initialize() {
         if (Settings.getPlayer().getWeapon().getName().equals("Sword")) {
@@ -172,20 +171,16 @@ public class GameScreenController {
         man.getChildren().setAll(player);
         money.setText("Money: " + Settings.getMoney());
         health.setText("Health: " + Settings.getPlayer().getHealth());
-
         //array list of rooms, starts with main room
         ArrayList<DungeonRoom> rooms = new ArrayList<>();
         rooms.add(new DungeonRoom(1, 1, 1, 1, 0, false, true));
-
         //generates 20 more rooms, can change this number
         for (int i = 0; i < 20; i++) {
             int roomType = 1 + (int) (Math.random() * 15);
-
             //does not allow "dead-end" rooms right now
             while (roomType == 1 || roomType == 2 || roomType == 4 || roomType == 8) {
                 roomType = 1 + (int) (Math.random() * 15);
             }
-
             //converts to binary to create the room
             int[] bin = new int[4];
             int counter = 0;
@@ -194,16 +189,13 @@ public class GameScreenController {
                 roomType = roomType / 2;
                 counter++;
             }
-
             rooms.add(new DungeonRoom(bin[3], bin[2], bin[1], bin[0], i + 1, false, false));
         }
-
         //sorts rooms into lists if they have those exits - room can be part of multiple lists
         ArrayList<DungeonRoom> northRooms = new ArrayList<>();
         ArrayList<DungeonRoom> southRooms = new ArrayList<>();
         ArrayList<DungeonRoom> eastRooms = new ArrayList<>();
         ArrayList<DungeonRoom> westRooms = new ArrayList<>();
-
         for (DungeonRoom r : rooms) {
             if (r.hasNorthExit()) {
                 northRooms.add(r);
@@ -218,7 +210,6 @@ public class GameScreenController {
                 westRooms.add(r);
             }
         }
-
         //Links rooms to each other
         for (DungeonRoom r : rooms) {
             if (!r.areExitsFilled()) {
@@ -227,10 +218,8 @@ public class GameScreenController {
                         if (r != southRooms.get(i) && !r.isLinkedTo(southRooms.get(i))) {
                             r.setNorthRoom(southRooms.get(i));
                             southRooms.get(i).setSouthRoom(r);
-
                             southRooms.remove(i);
                             northRooms.remove(r);
-
                             i = -1;
                         }
                     }
@@ -240,10 +229,8 @@ public class GameScreenController {
                         if (r != northRooms.get(i) && !r.isLinkedTo(northRooms.get(i))) {
                             r.setSouthRoom(northRooms.get(i));
                             northRooms.get(i).setNorthRoom(r);
-
                             northRooms.remove(i);
                             southRooms.remove(r);
-
                             i = northRooms.size();
                         }
                     }
@@ -253,10 +240,8 @@ public class GameScreenController {
                         if (r != westRooms.get(i) && !r.isLinkedTo(westRooms.get(i))) {
                             r.setEastRoom(westRooms.get(i));
                             westRooms.get(i).setWestRoom(r);
-
                             westRooms.remove(i);
                             eastRooms.remove(r);
-
                             i = -1;
                         }
                     }
@@ -266,34 +251,33 @@ public class GameScreenController {
                         if (r != eastRooms.get(i) && !r.isLinkedTo(eastRooms.get(i))) {
                             r.setWestRoom(eastRooms.get(i));
                             eastRooms.get(i).setEastRoom(r);
-
                             eastRooms.remove(i);
                             westRooms.remove(r);
-
                             i = eastRooms.size();
                         }
                     }
                 }
             }
         }
-
         for (DungeonRoom r : rooms) {
             if (!r.areExitsFilled()) {
                 r.fillRooms();
             }
         }
-
         addExit(rooms);
-
         //Fills all remaining exits with dead-end rooms
         for (DungeonRoom r : rooms) {
             if (!r.areExitsFilled()) {
                 r.fillRooms();
             }
         }
-
         //Prints out dungeon map
         //For understanding dungeon layout
+        printMap(rooms);
+        Settings.setCurrentRoom(rooms.get(0));
+    }
+
+    public void printMap(ArrayList<DungeonRoom> rooms) {
         for (int i = 0; i < rooms.size(); i++) {
             System.out.println("Room: " + rooms.get(i).getRoomNum());
             System.out.println(rooms.get(i).getRoomPath());
@@ -317,8 +301,6 @@ public class GameScreenController {
             System.out.println();
             System.out.println();
         }
-
-        Settings.setCurrentRoom(rooms.get(0));
     }
 
     public void addExit(ArrayList<DungeonRoom> rooms) {
@@ -456,77 +438,79 @@ public class GameScreenController {
         }
     }
 
-    Timeline t = new Timeline();
-    Timeline tL = new Timeline();
-    boolean right = false;
-    boolean left = false;
+    private Timeline t = new Timeline();
+    private Timeline tL = new Timeline();
+    private boolean right = false;
+    private boolean left = false;
+
     @FXML
     public void enterDungeon(KeyEvent event) throws IOException {
         t.setCycleCount(Timeline.INDEFINITE);
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(100),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player1);
-                }
+            Duration.millis(100),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player1);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(200),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player2);
-                }
+            Duration.millis(200),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player2);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(300),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player3);
-                }
+            Duration.millis(300),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player3);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(400),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player4);
-                }
+            Duration.millis(400),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player4);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(500),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player);
-                }
+            Duration.millis(500),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player);
+            }
         ));
 
         tL.setCycleCount(Timeline.INDEFINITE);
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(100),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL1);
-                }
+            Duration.millis(100),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL1);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(200),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL2);
-                }
+            Duration.millis(200),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL2);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(300),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL3);
-                }
+            Duration.millis(300),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL3);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(400),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL4);
-                }
+            Duration.millis(400),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL4);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(500),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL);
-                }
+            Duration.millis(500),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL);
+            }
         ));
 
         if (man.getLayoutY() <= -150) {
+            Settings.setGameState(GameState.DUNGEON);
             Parent menuParent = FXMLLoader.load(
                     getClass().getResource(Settings.getCurrentRoom().getRoomPath()));
             Scene menuScene = new Scene(menuParent, 960, 600);

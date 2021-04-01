@@ -14,9 +14,13 @@ public class Player {
         return health;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public void dealDamage(int damage) {
         this.health -= damage;
-        if(this.health < 0) {
+        if (this.health < 0) {
             this.health = 0;
         }
     }

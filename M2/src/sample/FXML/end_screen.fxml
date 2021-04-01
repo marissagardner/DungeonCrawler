@@ -30,7 +30,7 @@
         </HBox>
     </top>
     <center>
-        <Button fx:id="startButton" mnemonicParsing="false"
+        <Button fx:id="playAgain" mnemonicParsing="false"
                 onAction="#goToStartScreen" prefHeight="45.0" prefWidth="144.0"
                 styleClass="startGame" text="Play Again?"
                 BorderPane.alignment="CENTER">

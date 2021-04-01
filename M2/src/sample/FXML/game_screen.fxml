@@ -11,174 +11,189 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#enterDungeon" onKeyReleased="#enterDungeon" prefHeight="600.0" prefWidth="960" styleClass="bodybg" stylesheets="@../../css/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Java.GameScreenController">
+<BorderPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity"
+            onKeyPressed="#enterDungeon" onKeyReleased="#enterDungeon"
+            prefHeight="600.0" prefWidth="960" styleClass="bodybg"
+            stylesheets="@../../css/styles.css"
+            xmlns="http://javafx.com/javafx/15.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.Java.GameScreenController">
     <left>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="200.0" prefWidth="100.0"
+              BorderPane.alignment="CENTER">
             <children>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="10.0"/>
                     </VBox.margin>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="10.0"/>
                     </VBox.margin>
                 </ImageView>
             </children>
         </VBox>
     </left>
     <bottom>
-        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <HBox prefHeight="100.0" prefWidth="200.0"
+              BorderPane.alignment="CENTER">
             <children>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets bottom="30.0" />
+                        <Insets bottom="30.0"/>
                     </HBox.margin>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets bottom="30.0" left="30.0" />
+                        <Insets bottom="30.0" left="30.0"/>
                     </HBox.margin>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0"/>
                     </HBox.margin>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0"/>
                     </HBox.margin>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0"/>
                     </HBox.margin>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0"/>
                     </HBox.margin>
                 </ImageView>
                 <ImageView pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0"/>
                     </HBox.margin>
                 </ImageView>
             </children>
         </HBox>
     </bottom>
     <right>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="200.0" prefWidth="100.0"
+              BorderPane.alignment="CENTER">
             <children>
                 <ImageView pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="10.0"/>
                     </VBox.margin>
                 </ImageView>
                 <ImageView pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <VBox.margin>
-                        <Insets top="10.0" />
+                        <Insets top="10.0"/>
                     </VBox.margin>
                 </ImageView>
             </children>
         </VBox>
     </right>
     <top>
-        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <HBox prefHeight="100.0" prefWidth="200.0"
+              BorderPane.alignment="CENTER">
             <children>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0"/>
                     </HBox.margin>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0"/>
                     </HBox.margin>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets left="171.0" />
+                        <Insets left="171.0"/>
                     </HBox.margin>
                 </ImageView>
                 <ImageView>
                     <image>
-                        <Image url="@../../img/Tree.png" />
+                        <Image url="@../../img/Tree.png"/>
                     </image>
                     <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="30.0"/>
                     </HBox.margin>
                 </ImageView>
-                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="121.0">
+                <VBox alignment="TOP_CENTER" prefHeight="200.0"
+                      prefWidth="121.0">
                     <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </HBox.margin>
                     <children>
-                        <Text fx:id="money" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="money">
+                        <Text fx:id="money" strokeType="OUTSIDE"
+                              strokeWidth="0.0" styleClass="money">
                             <font>
-                                <Font size="16.0" />
+                                <Font size="16.0"/>
                             </font>
                             <VBox.margin>
-                                <Insets top="25.0" />
+                                <Insets top="25.0"/>
                             </VBox.margin>
                         </Text>
-                  <Text fx:id="health" layoutX="71.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="money">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </Text>
+                        <Text fx:id="health" layoutX="71.0" layoutY="45.0"
+                              strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="money">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="20.0"/>
+                            </VBox.margin>
+                        </Text>
                     </children>
                 </VBox>
             </children>
@@ -186,160 +201,218 @@
     </top>
     <center>
         <Pane>
-         <Group fx:id="man" layoutX="336.0" layoutY="99.0">
-            <children>
-                  <ImageView fx:id="character" fitHeight="122.0" fitWidth="66.0" preserveRatio="true">
-                      <image>
-                          <Image url="@../../img/man_stand.png" />
-                      </image>
-                  </ImageView>
-                <ImageView fx:id="characterL" fitHeight="122.0" fitWidth="66.0" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/man_standL.png" />
-                    </image>
-                </ImageView>
-               <ImageView fx:id="character1" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../../img/man_walk1.png" />
-                  </image>
-               </ImageView>
-               <ImageView fx:id="character2" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../../img/man_walk2.png" />
-                  </image>
-               </ImageView>
-               <ImageView fx:id="character3" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../../img/man_walk3.png" />
-                  </image>
-               </ImageView>
-               <ImageView fx:id="character4" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/man_walk4.png" />
-                    </image>
-               </ImageView>
-                <ImageView fx:id="characterL1" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/man_walkL1.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterL2" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/man_walkL2.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterL3" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/man_walkL3.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterL4" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/man_walkL4.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxe" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_stand.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxeL" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_standL.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxe1" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_walk1.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxe2" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_walk2.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxe3" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_walk3.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxe4" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_walk4.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxeL1" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_walkL1.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxeL2" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_walkL2.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxeL3" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_walkL3.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characteraxeL4" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manaxe_walkL4.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbow" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_stand.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbowL" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_standL.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbow1" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_walk1.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbow2" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_walk2.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbow3" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_walk3.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbow4" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_walk4.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbowL1" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_walkL1.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbowL2" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_walkL2.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbowL3" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_walkL3.png" />
-                    </image>
-                </ImageView>
-                <ImageView fx:id="characterbowL4" fitHeight="122.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/manbow_walkL4.png" />
-                    </image>
-                </ImageView>
-            </children>
-         </Group>
+            <Group fx:id="man" layoutX="336.0" layoutY="99.0">
+                <children>
+                    <ImageView fx:id="character" fitHeight="122.0"
+                               fitWidth="66.0" preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_stand.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterL" fitHeight="122.0"
+                               fitWidth="66.0" preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_standL.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="character1" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_walk1.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="character2" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_walk2.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="character3" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_walk3.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="character4" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_walk4.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterL1" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_walkL1.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterL2" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_walkL2.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterL3" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_walkL3.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterL4" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/man_walkL4.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxe" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_stand.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxeL" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_standL.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxe1" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_walk1.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxe2" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_walk2.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxe3" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_walk3.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxe4" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_walk4.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxeL1" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_walkL1.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxeL2" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_walkL2.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxeL3" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_walkL3.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characteraxeL4" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manaxe_walkL4.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbow" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_stand.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbowL" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_standL.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbow1" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_walk1.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbow2" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_walk2.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbow3" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_walk3.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbow4" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_walk4.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbowL1" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_walkL1.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbowL2" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_walkL2.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbowL3" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_walkL3.png"/>
+                        </image>
+                    </ImageView>
+                    <ImageView fx:id="characterbowL4" fitHeight="122.0"
+                               fitWidth="66.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../../img/manbow_walkL4.png"/>
+                        </image>
+                    </ImageView>
+                </children>
+            </Group>
         </Pane>
     </center>
 </BorderPane>

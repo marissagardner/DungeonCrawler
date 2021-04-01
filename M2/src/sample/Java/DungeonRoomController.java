@@ -126,16 +126,17 @@ public class DungeonRoomController {
     @FXML
     private ImageView monster;
 
-    ImageView player;
-    ImageView player1;
-    ImageView player2;
-    ImageView player3;
-    ImageView player4;
-    ImageView playerL;
-    ImageView playerL1;
-    ImageView playerL2;
-    ImageView playerL3;
-    ImageView playerL4;
+    private ImageView player;
+    private ImageView player1;
+    private ImageView player2;
+    private ImageView player3;
+    private ImageView player4;
+    private ImageView playerL;
+    private ImageView playerL1;
+    private ImageView playerL2;
+    private ImageView playerL3;
+    private ImageView playerL4;
+
     @FXML
     public void initialize() {
         if (Settings.getPlayer().getWeapon().getName().equals("Sword")) {
@@ -185,7 +186,7 @@ public class DungeonRoomController {
         }
 
         if (Settings.getCurrentRoom().getRoomNum() != 0) {
-            if(!Settings.getCurrentRoom().isDefeated()) {
+            if (!Settings.getCurrentRoom().isDefeated()) {
                 monster.setImage(new Image(Settings.getCurrentRoom().getMonster().getSpritePath()));
                 monster.setLayoutX(300);
                 monster.setLayoutY(80);
@@ -207,10 +208,10 @@ public class DungeonRoomController {
         }
     }
 
-    Timeline t = new Timeline();
-    Timeline tL = new Timeline();
-    boolean right = false;
-    boolean left = false;
+    private Timeline t = new Timeline();
+    private Timeline tL = new Timeline();
+    private boolean right = false;
+    private boolean left = false;
 
     @FXML
     public void reset(KeyEvent event) throws IOException {
@@ -227,68 +228,72 @@ public class DungeonRoomController {
     public void move(KeyEvent event) throws IOException {
         t.setCycleCount(Timeline.INDEFINITE);
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(100),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player1);
-                }
+            Duration.millis(100),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player1);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(200),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player2);
-                }
+            Duration.millis(200),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player2);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(300),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player3);
-                }
+            Duration.millis(300),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player3);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(400),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player4);
-                }
+            Duration.millis(400),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player4);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(500),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player);
-                }
+            Duration.millis(500),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player);
+            }
         ));
 
         tL.setCycleCount(Timeline.INDEFINITE);
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(100),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL1);
-                }
+            Duration.millis(100),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL1);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(200),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL2);
-                }
+            Duration.millis(200),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL2);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(300),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL3);
-                }
+            Duration.millis(300),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL3);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(400),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL4);
-                }
+            Duration.millis(400),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL4);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(500),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL);
-                }
+            Duration.millis(500),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL);
+            }
         ));
 
+        moveHelper(event);
+    }
+
+    public void moveHelper(KeyEvent event) throws IOException {
         if (event.getCode().equals((KeyCode.UP))) {
             if (right) {
                 t.play();
@@ -371,7 +376,30 @@ public class DungeonRoomController {
                     man.setLayoutY(man.getLayoutY() + 9);
                 }
             }
-        } else if (event.getCode().equals((KeyCode.RIGHT))) {
+        }
+
+        moveHelperRightLeft(event);
+
+        if (!Settings.getCurrentRoom().isDefeated()) {
+            if (man.getLayoutX() >= 230 && man.getLayoutX() <= 430
+                    && man.getLayoutY() >= -30 && man.getLayoutY() <= 220) {
+                Parent menuParent = FXMLLoader.load(
+                        getClass().getResource("../FXML/battle_screen.fxml"));
+                Scene menuScene = new Scene(menuParent, 960, 600);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(menuScene);
+                window.setMinHeight(600);
+                window.setMinWidth(960);
+                window.setMaxHeight(600);
+                window.setMaxWidth(960);
+                window.show();
+                menuScene.getRoot().requestFocus();
+            }
+        }
+    }
+
+    public void moveHelperRightLeft(KeyEvent event) throws IOException {
+        if (event.getCode().equals((KeyCode.RIGHT))) {
             t.play();
             right = true;
             left = false;
@@ -435,31 +463,6 @@ public class DungeonRoomController {
                     window.show();
                     menuScene.getRoot().requestFocus();
                 }
-            }
-            if (Settings.getCurrentRoom().hasNorthExit()
-                    || Settings.getCurrentRoom().hasSouthExit()) {
-//                if ((man.getLayoutY() < 0
-//                        || man.getLayoutY() > 198) && man.getLayoutX() - 9 >= 280) {
-//                    man.setLayoutX(character.getLayoutX() - 9);
-//                }
-                //temporary fix
-            }
-        }
-
-        if(!Settings.getCurrentRoom().isDefeated()) {
-            if(man.getLayoutX() >= 230 && man.getLayoutX() <= 430
-                    && man.getLayoutY() >= -30 && man.getLayoutY() <= 220) {
-                Parent menuParent = FXMLLoader.load(
-                        getClass().getResource("../FXML/battle_screen.fxml"));
-                Scene menuScene = new Scene(menuParent, 960, 600);
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(menuScene);
-                window.setMinHeight(600);
-                window.setMinWidth(960);
-                window.setMaxHeight(600);
-                window.setMaxWidth(960);
-                window.show();
-                menuScene.getRoot().requestFocus();
             }
         }
     }

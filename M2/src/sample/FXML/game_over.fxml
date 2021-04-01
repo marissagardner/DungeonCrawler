@@ -6,18 +6,26 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="gameOverbg" stylesheets="@../../css/styles.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Java.GameOverController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            styleClass="gameOverbg" stylesheets="@../../css/styles.css"
+            xmlns="http://javafx.com/javafx/15.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.Java.GameOverController">
     <top>
-        <HBox alignment="TOP_CENTER" BorderPane.alignment="CENTER" />
+        <HBox alignment="TOP_CENTER" BorderPane.alignment="CENTER"/>
     </top>
-   <bottom>
-        <Button fx:id="startButton" mnemonicParsing="false" onAction="#goToStartScreen" prefHeight="45.0" prefWidth="144.0" styleClass="startGame" text="Play Again?" BorderPane.alignment="CENTER">
+    <bottom>
+        <Button fx:id="playAgain" mnemonicParsing="false"
+                onAction="#goToStartScreen" prefHeight="45.0" prefWidth="144.0"
+                styleClass="startGame" text="Play Again?"
+                BorderPane.alignment="CENTER">
             <font>
-                <Font name="Papyrus" size="16.0" />
+                <Font name="Papyrus" size="16.0"/>
             </font>
-         <BorderPane.margin>
-            <Insets bottom="50.0" />
-         </BorderPane.margin>
+            <BorderPane.margin>
+                <Insets bottom="50.0"/>
+            </BorderPane.margin>
         </Button>
-   </bottom>
+    </bottom>
 </BorderPane>

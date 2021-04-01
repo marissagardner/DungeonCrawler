@@ -29,7 +29,7 @@ public class Monster {
 
     public void dealDamage(int damage) {
         this.health -= damage;
-        if(this.health < 0) {
+        if (this.health < 0) {
             this.health = 0;
         }
     }
