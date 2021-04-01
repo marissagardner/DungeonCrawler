@@ -204,7 +204,7 @@ public class DungeonRoomController {
 
     Timeline t = new Timeline();
     Timeline tL = new Timeline();
-    boolean right = false;
+    boolean right = true;
     boolean left = false;
     //Unused right now, onKeyReleased could call this method for walk functionality
     @FXML

@@ -453,7 +453,7 @@ public class GameScreenController {
 
     Timeline t = new Timeline();
     Timeline tL = new Timeline();
-    boolean right = false;
+    boolean right = true;
     boolean left = false;
     @FXML
     public void enterDungeon(KeyEvent event) throws IOException {
