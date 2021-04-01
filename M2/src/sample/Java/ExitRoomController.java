@@ -252,16 +252,16 @@ public class ExitRoomController {
             } else if (left) {
                 tL.play();
             }
-            if (character.getLayoutY() - 9 >= 0
-                    && character.getLayoutX() >= 0 && character.getLayoutX() <= 672) {
-                character.setLayoutY(character.getLayoutY() - 9);
+            if (man.getLayoutY() - 9 >= 0
+                    && man.getLayoutX() >= 0 && man.getLayoutX() <= 672) {
+                man.setLayoutY(man.getLayoutY() - 9);
             }
 
             if (Settings.getCurrentRoom().hasNorthExit()) {
-                if (character.getLayoutX() > 150 && character.getLayoutX() < 520) {
-                    character.setLayoutY(character.getLayoutY() - 9);
+                if (man.getLayoutX() > 150 && man.getLayoutX() < 520) {
+                    man.setLayoutY(man.getLayoutY() - 9);
                 }
-                if (character.getLayoutY() <= -150) {
+                if (man.getLayoutY() <= -150) {
                     //Settings.setCurrentRoom(Settings.getCurrentRoom().getNorthRoom());
                     acceptInput = false;
 
@@ -287,17 +287,17 @@ public class ExitRoomController {
                 tL.play();
             }
 
-            if (character.getLayoutY() + 9 <= 198
-                    && character.getLayoutX() >= 0 && character.getLayoutX() <= 672) {
-                character.setLayoutY(character.getLayoutY() + 9);
+            if (man.getLayoutY() + 9 <= 198
+                    && man.getLayoutX() >= 0 && man.getLayoutX() <= 672) {
+                man.setLayoutY(man.getLayoutY() + 9);
             }
 
             if (Settings.getCurrentRoom().hasSouthExit()) {
-                if (character.getLayoutX() > 280 && character.getLayoutX() < 400) {
-                    character.setLayoutY(character.getLayoutY() + 9);
+                if (man.getLayoutX() > 280 && man.getLayoutX() < 400) {
+                    man.setLayoutY(man.getLayoutY() + 9);
                 }
 
-                if (character.getLayoutY() >= 380) {
+                if (man.getLayoutY() >= 380) {
                     Settings.setCurrentRoom(Settings.getCurrentRoom().getSouthRoom());
                     acceptInput = false;
 
@@ -320,18 +320,18 @@ public class ExitRoomController {
             t.play();
             right = true;
             left = false;
-            if (character.getLayoutX() + 9 <= 672
-                    && character.getLayoutY() >= 0 && character.getLayoutY() <= 198) {
-                character.setLayoutX(character.getLayoutX() + 9);
+            if (man.getLayoutX() + 9 <= 672
+                    && man.getLayoutY() >= 0 && man.getLayoutY() <= 198) {
+                man.setLayoutX(man.getLayoutX() + 9);
             }
 
             if (Settings.getCurrentRoom().hasNorthExit()
                     || Settings.getCurrentRoom().hasSouthExit()) {
-                if (character.getLayoutY() > 198 && character.getLayoutX() + 9 <= 400) {
-                    character.setLayoutX(character.getLayoutX() + 9);
+                if (man.getLayoutY() > 198 && man.getLayoutX() + 9 <= 400) {
+                    man.setLayoutX(man.getLayoutX() + 9);
                 }
-                if (character.getLayoutY() < 0 && character.getLayoutX() + 9 <= 520) {
-                    character.setLayoutX(character.getLayoutX() + 9);
+                if (man.getLayoutY() < 0 && man.getLayoutX() + 9 <= 520) {
+                    man.setLayoutX(man.getLayoutX() + 9);
                 }
             }
 
@@ -340,18 +340,18 @@ public class ExitRoomController {
             left = true;
             right = false;
 
-            if (character.getLayoutX() - 9 >= 0
-                    && character.getLayoutY() >= 0 && character.getLayoutY() <= 198) {
-                character.setLayoutX(character.getLayoutX() - 9);
+            if (man.getLayoutX() - 9 >= 0
+                    && man.getLayoutY() >= 0 && man.getLayoutY() <= 198) {
+                man.setLayoutX(man.getLayoutX() - 9);
             }
 
             if (Settings.getCurrentRoom().hasNorthExit()
                     || Settings.getCurrentRoom().hasSouthExit()) {
-                if (character.getLayoutY() > 198 && character.getLayoutX() - 9 >= 280) {
-                    character.setLayoutX(character.getLayoutX() - 9);
+                if (man.getLayoutY() > 198 && man.getLayoutX() - 9 >= 280) {
+                    man.setLayoutX(man.getLayoutX() - 9);
                 }
-                if (character.getLayoutY() < 0 && character.getLayoutX() - 9 >= 150) {
-                    character.setLayoutX(character.getLayoutX() - 9);
+                if (man.getLayoutY() < 0 && man.getLayoutX() - 9 >= 150) {
+                    man.setLayoutX(man.getLayoutX() - 9);
                 }
             }
         }
