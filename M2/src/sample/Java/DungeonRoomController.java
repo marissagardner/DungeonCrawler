@@ -211,7 +211,7 @@ public class DungeonRoomController {
 
     private Timeline t = new Timeline();
     private Timeline tL = new Timeline();
-    private boolean right = false;
+    private boolean right = true;
     private boolean left = false;
     @FXML
     public void reset(KeyEvent event) throws IOException {

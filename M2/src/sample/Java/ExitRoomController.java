@@ -176,10 +176,10 @@ public class ExitRoomController {
         }
     }
 
-    Timeline t = new Timeline();
-    Timeline tL = new Timeline();
-    boolean right = true;
-    boolean left = false;
+    private Timeline t = new Timeline();
+    private Timeline tL = new Timeline();
+    private boolean right = true;
+    private boolean left = false;
     @FXML
     public void move(KeyEvent event) throws IOException {
         t.setCycleCount(Timeline.INDEFINITE);
