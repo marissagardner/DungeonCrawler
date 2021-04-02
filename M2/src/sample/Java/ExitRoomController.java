@@ -115,16 +115,16 @@ public class ExitRoomController {
     @FXML
     private Group man;
 
-    ImageView player;
-    ImageView player1;
-    ImageView player2;
-    ImageView player3;
-    ImageView player4;
-    ImageView playerL;
-    ImageView playerL1;
-    ImageView playerL2;
-    ImageView playerL3;
-    ImageView playerL4;
+    private ImageView player;
+    private ImageView player1;
+    private ImageView player2;
+    private ImageView player3;
+    private ImageView player4;
+    private ImageView playerL;
+    private ImageView playerL1;
+    private ImageView playerL2;
+    private ImageView playerL3;
+    private ImageView playerL4;
     @FXML
     public void initialize() {
         if (Settings.getPlayer().getWeapon().getName().equals("Sword")) {
@@ -184,68 +184,72 @@ public class ExitRoomController {
     public void move(KeyEvent event) throws IOException {
         t.setCycleCount(Timeline.INDEFINITE);
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(100),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player1);
-                }
+            Duration.millis(100),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player1);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(200),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player2);
-                }
+            Duration.millis(200),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player2);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(300),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player3);
-                }
+            Duration.millis(300),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player3);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(400),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player4);
-                }
+            Duration.millis(400),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player4);
+            }
         ));
         t.getKeyFrames().add(new KeyFrame(
-                Duration.millis(500),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(player);
-                }
+            Duration.millis(500),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(player);
+            }
         ));
 
         tL.setCycleCount(Timeline.INDEFINITE);
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(100),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL1);
-                }
+            Duration.millis(100),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL1);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(200),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL2);
-                }
+            Duration.millis(200),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL2);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(300),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL3);
-                }
+            Duration.millis(300),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL3);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(400),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL4);
-                }
+            Duration.millis(400),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL4);
+            }
         ));
         tL.getKeyFrames().add(new KeyFrame(
-                Duration.millis(500),
-                (ActionEvent e) -> {
-                    man.getChildren().setAll(playerL);
-                }
+            Duration.millis(500),
+            (ActionEvent e) -> {
+                man.getChildren().setAll(playerL);
+            }
         ));
 
+        moveHelper(event);
+    }
+
+    public void moveHelper(KeyEvent event) throws IOException {
         if (event.getCode().equals((KeyCode.UP))) {
             if (right) {
                 t.play();

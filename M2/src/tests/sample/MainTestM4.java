@@ -333,7 +333,7 @@ public class MainTestM4 extends ApplicationTest {
             press(KeyCode.UP).release(KeyCode.UP);
         }
         sleep(1500);
-        assertTrue(Settings.getCurrentRoom().isDefeated() == false);
+        assertTrue(!Settings.getCurrentRoom().isDefeated());
         for (int i = 0; i < 7; i++) {
             press(KeyCode.DOWN).release(KeyCode.DOWN);
         }
@@ -349,7 +349,7 @@ public class MainTestM4 extends ApplicationTest {
             press(KeyCode.RIGHT).release(KeyCode.RIGHT);
         }
         sleep(1500);
-        assertTrue(Settings.getCurrentRoom().isDefeated() == false);
+        assertTrue(!Settings.getCurrentRoom().isDefeated());
         for (int i = 0; i < 4; i++) {
             press(KeyCode.LEFT).release(KeyCode.LEFT);
         }
@@ -359,7 +359,7 @@ public class MainTestM4 extends ApplicationTest {
             press(KeyCode.DOWN).release(KeyCode.DOWN);
         }
         sleep(1500);
-        assertTrue(Settings.getCurrentRoom().isDefeated() == false);
+        assertTrue(!Settings.getCurrentRoom().isDefeated());
         for (int i = 0; i < 3; i++) {
             press(KeyCode.UP).release(KeyCode.UP);
         }
@@ -375,7 +375,7 @@ public class MainTestM4 extends ApplicationTest {
             press(KeyCode.LEFT).release(KeyCode.LEFT);
         }
         sleep(1500);
-        assertTrue(Settings.getCurrentRoom().isDefeated() == false);
+        assertTrue(!Settings.getCurrentRoom().isDefeated());
         for (int i = 0; i < 5; i++) {
             press(KeyCode.RIGHT).release(KeyCode.RIGHT);
         }
