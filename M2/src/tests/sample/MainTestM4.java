@@ -15,6 +15,7 @@ import static org.testfx.api.FxAssert.verifyThat;
 
 public class MainTestM4 extends ApplicationTest {
 
+    // These are the test cases for M4
     @Override
     public void start(Stage primaryStage) throws Exception {
         Main main = new Main();
